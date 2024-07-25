@@ -348,14 +348,13 @@ h2 {
     position: absolute;
     top: 12vh; 
     right: 4vw; 
-    width: 43vw;
-    height: 7vh;
-    background-color:#ffffff;
-    color:#1b1b1b;
+    width: 43vw; /* This can be adjusted as needed */
+    background-color: #ffffff;
+    color: #1b1b1b;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; 
-    align-items: flex-start; 
+    justify-content: center; /* Center content vertically */
+    align-items: flex-start;
     padding: 20px;
     border-radius: 8px;
     border: 1.5px solid #1b1b1b;
@@ -366,11 +365,12 @@ h2 {
     -webkit-animation-name: slideInRight;
     animation-name: slideInRight;
     -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  z-index:-1;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    z-index: -1; /* Ensure it's behind other elements if needed */
 }
+
 
 /* Styling for .overview content */
 .overview h1, .overview p, .overview a {
