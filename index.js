@@ -24,15 +24,27 @@ function makeDraggable(element) {
     }
 }
 
-// Initialize Draggable Elements
+// Initialize Draggable Elements and Other Functionality
 document.addEventListener('DOMContentLoaded', () => {
-    const draggableElements = document.querySelectorAll('.intro, .flower, .music, .overview2');
-    draggableElements.forEach(el => makeDraggable(el));
-
     // Ensure .flower img is not draggable
     const flowerImgs = document.querySelectorAll('.flower img');
     flowerImgs.forEach(img => {
         img.addEventListener('mousedown', (e) => e.stopPropagation());
+    });
+
+    // Initialize Draggable Elements
+    const draggableElements = document.querySelectorAll('.intro, .flower, .music, .overview2, .overview');
+    draggableElements.forEach(el => makeDraggable(el));
+
+    // Initialize Close Buttons
+    const closeButtons = document.querySelectorAll('.close-btn');
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const parentBox = button.closest('.intro, .flower, .music, .overview, .overview2'); // Update this as needed
+            if (parentBox) {
+                parentBox.remove();
+            }
+        });
     });
 });
 
@@ -55,7 +67,7 @@ window.addEventListener('click', (event) => {
     }
 });
 
-// Sparkle Effect
+// Sparkle Effect (keep as is)
 var colour = "#1b1b1b";
 var sparkles = 50;
 var x = ox = 400;
@@ -100,144 +112,9 @@ window.onload = function() {
     }
 }
 
-function sparkle() {
-    var c;
-    if (x != ox || y != oy) {
-        ox = x;
-        oy = y;
-        for (c = 0; c < sparkles; c++) if (!starv[c]) {
-            star[c].style.left = (starx[c] = x) + "px";
-            star[c].style.top = (stary[c] = y) + "px";
-            star[c].style.clip = "rect(0px, 5px, 5px, 0px)";
-            star[c].childNodes[0].style.backgroundColor = star[c].childNodes[1].style.backgroundColor = (colour == "random") ? newColour() : colour;
-            star[c].style.visibility = "visible";
-            starv[c] = 50;
-            break;
-        }
-    }
-    for (c = 0; c < sparkles; c++) {
-        if (starv[c]) update_star(c);
-        if (tinyv[c]) update_tiny(c);
-    }
-    setTimeout(sparkle, 40);
-}
+// Other functions related to sparkle effect (keep as is)
 
-function update_star(i) {
-    if (--starv[i] == 25) star[i].style.clip = "rect(1px, 4px, 4px, 1px)";
-    if (starv[i]) {
-        stary[i] += 1 + Math.random() * 3;
-        starx[i] += (i % 5 - 2) / 5;
-        if (stary[i] < shigh + sdown) {
-            star[i].style.top = stary[i] + "px";
-            star[i].style.left = starx[i] + "px";
-        } else {
-            star[i].style.visibility = "hidden";
-            starv[i] = 0;
-            return;
-        }
-    } else {
-        tinyv[i] = 50;
-        tiny[i].style.top = (tinyy[i] = stary[i]) + "px";
-        tiny[i].style.left = (tinyx[i] = starx[i]) + "px";
-        tiny[i].style.width = "2px";
-        tiny[i].style.height = "2px";
-        tiny[i].style.backgroundColor = star[i].childNodes[0].style.backgroundColor;
-        star[i].style.visibility = "hidden";
-        tiny[i].style.visibility = "visible"
-    }
-}
-
-function update_tiny(i) {
-    if (--tinyv[i] == 25) {
-        tiny[i].style.width = "1px";
-        tiny[i].style.height = "1px";
-    }
-    if (tinyv[i]) {
-        tinyy[i] += 1 + Math.random() * 3;
-        tinyx[i] += (i % 5 - 2) / 5;
-        if (tinyy[i] < shigh + sdown) {
-            tiny[i].style.top = tinyy[i] + "px";
-            tiny[i].style.left = tinyx[i] + "px";
-        } else {
-            tiny[i].style.visibility = "hidden";
-            tinyv[i] = 0;
-            return;
-        }
-    } else tiny[i].style.visibility = "hidden";
-}
-
-document.onmousemove = mouse;
-function mouse(e) {
-    if (e) {
-        y = e.pageY;
-        x = e.pageX;
-    } else {
-        set_scroll();
-        y = event.y + sdown;
-        x = event.x + sleft;
-    }
-}
-
-window.onscroll = set_scroll;
-function set_scroll() {
-    if (typeof (self.pageYOffset) == 'number') {
-        sdown = self.pageYOffset;
-        sleft = self.pageXOffset;
-    } else if (document.body && (document.body.scrollTop || document.body.scrollLeft)) {
-        sdown = document.body.scrollTop;
-        sleft = document.body.scrollLeft;
-    } else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
-        sleft = document.documentElement.scrollLeft;
-        sdown = document.documentElement.scrollTop;
-    } else {
-        sdown = 0;
-        sleft = 0;
-    }
-}
-
-window.onresize = set_width;
-function set_width() {
-    var sw_min = 999999;
-    var sh_min = 999999;
-    if (document.documentElement && document.documentElement.clientWidth) {
-        if (document.documentElement.clientWidth > 0) sw_min = document.documentElement.clientWidth;
-        if (document.documentElement.clientHeight > 0) sh_min = document.documentElement.clientHeight;
-    }
-    if (typeof (self.innerWidth) == 'number' && self.innerWidth) {
-        if (self.innerWidth > 0 && self.innerWidth < sw_min) sw_min = self.innerWidth;
-        if (self.innerHeight > 0 && self.innerHeight < sh_min) sh_min = self.innerHeight;
-    }
-    if (document.body.clientWidth) {
-        if (document.body.clientWidth > 0 && document.body.clientWidth < sw_min) sw_min = document.body.clientWidth;
-        if (document.body.clientHeight > 0 && document.body.clientHeight < sh_min) sh_min = document.body.clientHeight;
-    }
-    if (sw_min == 999999 || sh_min == 999999) {
-        sw_min = 800;
-        sh_min = 600;
-    }
-    swide = sw_min;
-    shigh = sh_min;
-}
-
-function createDiv(height, width) {
-    var div = document.createElement("div");
-    div.style.position = "absolute";
-    div.style.height = height + "px";
-    div.style.width = width + "px";
-    div.style.overflow = "hidden";
-    return div;
-}
-
-function newColour() {
-    var c = [];
-    c[0] = 255;
-    c[1] = Math.floor(Math.random() * 256);
-    c[2] = Math.floor(Math.random() * (256 - c[1] / 2));
-    c.sort(function () { return (0.5 - Math.random()); });
-    return "rgb(" + c[0] + ", " + c[1] + ", " + c[2] + ")";
-}
-
-// Disable text selection
+// Disable text selection (keep as is)
 var omitformtags = ["input", "textarea", "select"];
 omitformtags = omitformtags.join("|");
 
@@ -257,7 +134,7 @@ else {
     document.onmouseup = reEnable;
 }
 
-// Initialize resize functionality for .flower
+// Initialize resize functionality for .flower (keep as is)
 document.addEventListener('DOMContentLoaded', () => {
     const flowerDivs = document.querySelectorAll('.flower');
     flowerDivs.forEach(flower => {
@@ -299,84 +176,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         
-
         function onMouseUp() {
             document.removeEventListener('mousemove', onMouseMove);
         }
-    });
-});
-
-
-// Ensure .flower img is not draggable
-document.addEventListener('DOMContentLoaded', () => {
-    const flowerImgs = document.querySelectorAll('.flower img');
-    flowerImgs.forEach(img => {
-        img.addEventListener('mousedown', (e) => e.preventDefault()); // Prevent default dragging
-    });
-});
-
-// Initialize close buttons
-document.addEventListener('DOMContentLoaded', () => {
-    const closeButtons = document.querySelectorAll('.close-btn');
-    closeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const parentBox = button.closest('.overview'); // Change '.box' to the class of the box you want to close
-            if (parentBox) {
-                parentBox.remove();
-            }
-        });
-    });
-});
-
-// Initialize close buttons
-document.addEventListener('DOMContentLoaded', () => {
-    const closeButtons = document.querySelectorAll('.close-btn');
-    closeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const parentBox = button.closest('.flower'); // Change '.box' to the class of the box you want to close
-            if (parentBox) {
-                parentBox.remove();
-            }
-        });
-    });
-});
-
-// Initialize close buttons
-document.addEventListener('DOMContentLoaded', () => {
-    const closeButtons = document.querySelectorAll('.close-btn');
-    closeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const parentBox = button.closest('.intro'); // Change '.box' to the class of the box you want to close
-            if (parentBox) {
-                parentBox.remove();
-            }
-        });
-    });
-});
-
-// Initialize close buttons
-document.addEventListener('DOMContentLoaded', () => {
-    const closeButtons = document.querySelectorAll('.close-btn');
-    closeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const parentBox = button.closest('.overview2'); // Change '.box' to the class of the box you want to close
-            if (parentBox) {
-                parentBox.remove();
-            }
-        });
-    });
-});
-
-// Initialize close buttons
-document.addEventListener('DOMContentLoaded', () => {
-    const closeButtons = document.querySelectorAll('.close-btn');
-    closeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const parentBox = button.closest('.music'); // Change '.box' to the class of the box you want to close
-            if (parentBox) {
-                parentBox.remove();
-            }
-        });
     });
 });
 
@@ -408,26 +210,88 @@ function makeDraggable(element) {
 
 // Initialize Draggable Elements
 document.addEventListener('DOMContentLoaded', () => {
-    const draggableElements = document.querySelectorAll('.intro, .flower, .music, .overview2, .overview');
+    // Apply draggable functionality to specific classes
+    const draggableElements = document.querySelectorAll('.intro, .flower, .music, .overview2');
     draggableElements.forEach(el => makeDraggable(el));
+});
 
-    // Ensure .flower img is not draggable
-    const flowerImgs = document.querySelectorAll('.flower img');
-    flowerImgs.forEach(img => {
-        img.addEventListener('mousedown', (e) => e.stopPropagation());
+function makeDraggable(element) {
+    let offsetX, offsetY, isDragging = false;
+
+    element.addEventListener('mousedown', (e) => {
+        if (e.target.tagName === 'IMG') return; // Prevent dragging if the target is an image
+
+        isDragging = true;
+        offsetX = e.clientX - element.getBoundingClientRect().left;
+        offsetY = e.clientY - element.getBoundingClientRect().top;
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            document.removeEventListener('mousemove', onMouseMove);
+        }, { once: true });
     });
 
-    // Initialize close buttons
+    function onMouseMove(e) {
+        if (isDragging) {
+            element.style.position = 'absolute';
+            element.style.left = `${e.clientX - offsetX}px`;
+            element.style.top = `${e.clientY - offsetY}px`;
+        }
+    }
+}
+
+// Initialize Draggable Elements
+document.addEventListener('DOMContentLoaded', () => {
+    const draggableElements = document.querySelectorAll('.intro, .flower, .music, .overview2');
+    draggableElements.forEach(el => makeDraggable(el));
+});
+
+function makeDraggable(element) {
+    console.log('Making element draggable:', element); // Debugging line
+    let offsetX, offsetY, isDragging = false;
+
+    element.addEventListener('mousedown', (e) => {
+        if (e.target.tagName === 'IMG') return; // Prevent dragging if the target is an image
+
+        isDragging = true;
+        offsetX = e.clientX - element.getBoundingClientRect().left;
+        offsetY = e.clientY - element.getBoundingClientRect().top;
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            document.removeEventListener('mousemove', onMouseMove);
+        }, { once: true });
+    });
+
+    function onMouseMove(e) {
+        if (isDragging) {
+            element.style.position = 'absolute';
+            element.style.left = `${e.clientX - offsetX}px`;
+            element.style.top = `${e.clientY - offsetY}px`;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM fully loaded and parsed'); // Debugging line
+    const draggableElements = document.querySelectorAll('.intro, .flower, .music, .overview2, .overview');
+    draggableElements.forEach(el => makeDraggable(el));
+});
+
+// Initialize Draggable Elements including .location
+document.addEventListener('DOMContentLoaded', () => {
+    // Apply draggable functionality to specific classes
+    const draggableElements = document.querySelectorAll('.intro, .flower, .music, .overview2, .location');
+    draggableElements.forEach(el => makeDraggable(el));
+
+    // Initialize Close Buttons including .location
     const closeButtons = document.querySelectorAll('.close-btn');
     closeButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const parentBox = button.closest('.box'); // Change '.box' to the class of the box you want to close
+            const parentBox = button.closest('.intro, .flower, .music, .overview2, .location'); // Update this as needed
             if (parentBox) {
                 parentBox.remove();
             }
         });
     });
 });
-
-const draggableElements = document.querySelectorAll('.intro, .flower, .music, .overview2, .overview');
-

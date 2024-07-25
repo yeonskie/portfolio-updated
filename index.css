@@ -206,6 +206,33 @@ body {
     color: #1b1b1b;
 }
 
+.location {
+    position:absolute;
+    top:13vh;
+    right:4vw;
+    width:45vw;
+    height:7vh;
+    background-color:#ffffff;
+    display: flex;
+    cursor:move;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    border:2px solid #1b1b1b;    
+    padding-bottom:20px;
+    box-shadow: 5px 5px 0px #1b1b1b;
+    font-size:20px;
+    color: #1b1b1b;
+    -webkit-animation-name: slideInRight;
+    animation-name: slideInRight;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
 .intro p {
     margin: 0 0 10px 0;
 }
@@ -342,33 +369,6 @@ h2 {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
   aspect-ratio: 1 / 1;
-}
-
-.overview2 {
-    position: absolute;
-    top: 12vh; 
-    right: 4vw; 
-    width: 43vw; /* This can be adjusted as needed */
-    background-color: #ffffff;
-    color: #1b1b1b;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center content vertically */
-    align-items: flex-start;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1.5px solid #1b1b1b;
-    box-shadow: 5px 5px 0px #1b1b1b;
-    font-size: 20px;
-    animation: fadeIn 2s ease-in-out; 
-    cursor: move;
-    -webkit-animation-name: slideInRight;
-    animation-name: slideInRight;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-    z-index: -1; /* Ensure it's behind other elements if needed */
 }
 
 
@@ -512,11 +512,6 @@ h2 {
 	}
 }
 
-.overview2 {
-    /* Your existing CSS for .overview2 */
-    position: absolute; /* Ensuring the div is positioned absolutely for dragging */
-    cursor: move; /* Changing cursor to indicate draggable area */
-  }
   
 
 .top-bar button img {
@@ -785,6 +780,40 @@ h2 {
     from {
       -webkit-transform: translate3d(-100%, 0, 0);
       transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+    }
+  
+    to {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+body {
+    cursor: url('cursor.png'), auto;
+}
+
+body {
+    cursor: url('cursor.png'), auto;
+}
+
+@-webkit-keyframes slideInRight {
+    from {
+      -webkit-transform: translate3d(100%, 0, 0);
+      transform: translate3d(100%, 0, 0);
+      visibility: visible;
+    }
+  
+    to {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      -webkit-transform: translate3d(100%, 0, 0);
+      transform: translate3d(100%, 0, 0);
       visibility: visible;
     }
   
