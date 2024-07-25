@@ -13,6 +13,7 @@ function makeDraggable(element) {
             isDragging = false;
             document.removeEventListener('mousemove', onMouseMove);
         }, { once: true });
+        console.log(`Dragging started for ${element.className}`);
     });
 
     function onMouseMove(e) {
@@ -20,6 +21,7 @@ function makeDraggable(element) {
             element.style.position = 'absolute';
             element.style.left = `${e.clientX - offsetX}px`;
             element.style.top = `${e.clientY - offsetY}px`;
+            console.log(`Dragging ${element.className} to (${e.clientX - offsetX}px, ${e.clientY - offsetY}px)`);
         }
     }
 }
@@ -34,7 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize Draggable Elements
     const draggableElements = document.querySelectorAll('.intro, .flower, .music, .overview2, .overview, .location, .stars, .statement');
-    draggableElements.forEach(el => makeDraggable(el));
+    draggableElements.forEach(el => {
+        console.log(`Initializing drag for ${el.className}`);
+        makeDraggable(el);
+    });
 
     // Initialize Close Buttons
     const closeButtons = document.querySelectorAll('.close-btn');
@@ -43,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const parentBox = button.closest('.intro, .flower, .music, .overview, .overview2, .location, .stars, .statement');
             if (parentBox) {
                 parentBox.remove();
+                console.log(`Removed ${parentBox.className}`);
             }
         });
     });
