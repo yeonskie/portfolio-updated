@@ -3,7 +3,7 @@ function makeDraggable(element) {
     let offsetX, offsetY, isDragging = false;
 
     element.addEventListener('mousedown', (e) => {
-        if (e.target.tagName === 'IMG') return; // Prevent dragging if the target is an image
+        if (e.target.tagName === 'BUTTON' || e.target.tagName === 'IMG') return; // Prevent dragging if the target is a button or image
 
         isDragging = true;
         offsetX = e.clientX - element.getBoundingClientRect().left;
@@ -33,18 +33,64 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Initialize Draggable Elements
-    const draggableElements = document.querySelectorAll('.intro, .flower, .music, .overview2, .overview');
+    const draggableElements = document.querySelectorAll('.intro, .flower, .music, .overview2, .overview, .location, .stars, .statement');
     draggableElements.forEach(el => makeDraggable(el));
 
     // Initialize Close Buttons
     const closeButtons = document.querySelectorAll('.close-btn');
     closeButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const parentBox = button.closest('.intro, .flower, .music, .overview, .overview2'); // Update this as needed
+            const parentBox = button.closest('.intro, .flower, .music, .overview, .overview2, .location, .stars, .statement');
             if (parentBox) {
                 parentBox.remove();
             }
         });
+    });
+
+    // Initialize Resize Functionality for .flower
+    const flowerDivs = document.querySelectorAll('.flower');
+    flowerDivs.forEach(flower => {
+        const resizer = document.createElement('div');
+        resizer.className = 'resizer';
+        flower.appendChild(resizer);
+
+        let startX, startY, startWidth, startHeight;
+
+        resizer.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            startX = e.clientX;
+            startY = e.clientY;
+            startWidth = parseFloat(getComputedStyle(flower, null).width.replace('px', ''));
+            startHeight = parseFloat(getComputedStyle(flower, null).height.replace('px', ''));
+
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp, { once: true });
+        });
+
+        function onMouseMove(e) {
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+            
+            // Calculate the new width and height
+            const newWidth = Math.max(startWidth + dx, 50); // Minimum width
+            const newHeight = Math.max(startHeight + dy, 50); // Minimum height
+            
+            // Maintain aspect ratio
+            const aspectRatio = startWidth / startHeight;
+            if (aspectRatio > 1) {
+                // Width is greater than height
+                flower.style.width = `${newWidth}px`;
+                flower.style.height = `${newWidth / aspectRatio}px`; // Adjust height based on width
+            } else {
+                // Height is greater than width
+                flower.style.height = `${newHeight}px`;
+                flower.style.width = `${newHeight * aspectRatio}px`; // Adjust width based on height
+            }
+        }
+        
+        function onMouseUp() {
+            document.removeEventListener('mousemove', onMouseMove);
+        }
     });
 });
 
@@ -133,165 +179,3 @@ else {
     document.onmousedown = disableselect;
     document.onmouseup = reEnable;
 }
-
-// Initialize resize functionality for .flower (keep as is)
-document.addEventListener('DOMContentLoaded', () => {
-    const flowerDivs = document.querySelectorAll('.flower');
-    flowerDivs.forEach(flower => {
-        const resizer = document.createElement('div');
-        resizer.className = 'resizer';
-        flower.appendChild(resizer);
-
-        let startX, startY, startWidth, startHeight;
-
-        resizer.addEventListener('mousedown', (e) => {
-            e.preventDefault();
-            startX = e.clientX;
-            startY = e.clientY;
-            startWidth = parseFloat(getComputedStyle(flower, null).width.replace('px', ''));
-            startHeight = parseFloat(getComputedStyle(flower, null).height.replace('px', ''));
-
-            document.addEventListener('mousemove', onMouseMove);
-            document.addEventListener('mouseup', onMouseUp, { once: true });
-        });
-
-        function onMouseMove(e) {
-            const dx = e.clientX - startX;
-            const dy = e.clientY - startY;
-            
-            // Calculate the new width and height
-            const newWidth = Math.max(startWidth + dx, 50); // Minimum width
-            const newHeight = Math.max(startHeight + dy, 50); // Minimum height
-            
-            // Maintain aspect ratio
-            const aspectRatio = startWidth / startHeight;
-            if (aspectRatio > 1) {
-                // Width is greater than height
-                flower.style.width = `${newWidth}px`;
-                flower.style.height = `${newWidth / aspectRatio}px`; // Adjust height based on width
-            } else {
-                // Height is greater than width
-                flower.style.height = `${newHeight}px`;
-                flower.style.width = `${newHeight * aspectRatio}px`; // Adjust width based on height
-            }
-        }
-        
-        function onMouseUp() {
-            document.removeEventListener('mousemove', onMouseMove);
-        }
-    });
-});
-
-// Draggable Function
-function makeDraggable(element) {
-    let offsetX, offsetY, isDragging = false;
-
-    element.addEventListener('mousedown', (e) => {
-        if (e.target.tagName === 'IMG') return; // Prevent dragging if the target is an image
-
-        isDragging = true;
-        offsetX = e.clientX - element.getBoundingClientRect().left;
-        offsetY = e.clientY - element.getBoundingClientRect().top;
-        document.addEventListener('mousemove', onMouseMove);
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            document.removeEventListener('mousemove', onMouseMove);
-        }, { once: true });
-    });
-
-    function onMouseMove(e) {
-        if (isDragging) {
-            element.style.position = 'absolute';
-            element.style.left = `${e.clientX - offsetX}px`;
-            element.style.top = `${e.clientY - offsetY}px`;
-        }
-    }
-}
-
-// Initialize Draggable Elements
-document.addEventListener('DOMContentLoaded', () => {
-    // Apply draggable functionality to specific classes
-    const draggableElements = document.querySelectorAll('.intro, .flower, .music, .overview2');
-    draggableElements.forEach(el => makeDraggable(el));
-});
-
-function makeDraggable(element) {
-    let offsetX, offsetY, isDragging = false;
-
-    element.addEventListener('mousedown', (e) => {
-        if (e.target.tagName === 'IMG') return; // Prevent dragging if the target is an image
-
-        isDragging = true;
-        offsetX = e.clientX - element.getBoundingClientRect().left;
-        offsetY = e.clientY - element.getBoundingClientRect().top;
-        document.addEventListener('mousemove', onMouseMove);
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            document.removeEventListener('mousemove', onMouseMove);
-        }, { once: true });
-    });
-
-    function onMouseMove(e) {
-        if (isDragging) {
-            element.style.position = 'absolute';
-            element.style.left = `${e.clientX - offsetX}px`;
-            element.style.top = `${e.clientY - offsetY}px`;
-        }
-    }
-}
-
-// Initialize Draggable Elements
-document.addEventListener('DOMContentLoaded', () => {
-    const draggableElements = document.querySelectorAll('.intro, .flower, .music, .overview2');
-    draggableElements.forEach(el => makeDraggable(el));
-});
-
-function makeDraggable(element) {
-    console.log('Making element draggable:', element); // Debugging line
-    let offsetX, offsetY, isDragging = false;
-
-    element.addEventListener('mousedown', (e) => {
-        if (e.target.tagName === 'IMG') return; // Prevent dragging if the target is an image
-
-        isDragging = true;
-        offsetX = e.clientX - element.getBoundingClientRect().left;
-        offsetY = e.clientY - element.getBoundingClientRect().top;
-        document.addEventListener('mousemove', onMouseMove);
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            document.removeEventListener('mousemove', onMouseMove);
-        }, { once: true });
-    });
-
-    function onMouseMove(e) {
-        if (isDragging) {
-            element.style.position = 'absolute';
-            element.style.left = `${e.clientX - offsetX}px`;
-            element.style.top = `${e.clientY - offsetY}px`;
-        }
-    }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM fully loaded and parsed'); // Debugging line
-    const draggableElements = document.querySelectorAll('.intro, .flower, .music, .overview2, .overview');
-    draggableElements.forEach(el => makeDraggable(el));
-});
-
-// Initialize Draggable Elements including .location
-document.addEventListener('DOMContentLoaded', () => {
-    // Apply draggable functionality to specific classes
-    const draggableElements = document.querySelectorAll('.intro, .flower, .music, .overview2, .location');
-    draggableElements.forEach(el => makeDraggable(el));
-
-    // Initialize Close Buttons including .location
-    const closeButtons = document.querySelectorAll('.close-btn');
-    closeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const parentBox = button.closest('.intro, .flower, .music, .overview2, .location'); // Update this as needed
-            if (parentBox) {
-                parentBox.remove();
-            }
-        });
-    });
-});

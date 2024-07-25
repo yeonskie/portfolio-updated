@@ -560,19 +560,6 @@ h2 {
     opacity: 1;
 }
 
-.box {
-    position: absolute;
-    background-color: #ffffff;
-    color: #1b1b1b;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1.5px solid #1b1b1b;
-    box-shadow: 5px 5px 0px #1b1b1b;
-    font-size: 15px;
-    transition: opacity 0.3s ease; /* Smooth hide/show transition */
-}
 
 /* Close Button */
 .close-btn {
@@ -822,3 +809,90 @@ body {
       transform: translate3d(0, 0, 0);
     }
   }
+
+  .box {
+    background-color:#f1f1f1;
+    color:#1b1b1b;
+    box-shadow: 5px 5px 0px #1b1b1b;
+  }
+
+  .statement {
+    position: absolute;
+    bottom: 38vh; 
+    right: 17vw; 
+    width: 15vw;
+    height: auto;
+    background-color:#ffffff;
+    color:#1b1b1b;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    padding: 20px;
+    border-radius: 8px;
+    border: 1.5px solid #1b1b1b;
+    box-shadow: 5px 5px 0px #1b1b1b;
+    font-size: 15px;
+    animation: fadeIn 2s ease-in-out; 
+    cursor: move;
+    -webkit-animation-name: slideInRight;
+    animation-name: slideInRight;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    aspect-ratio: 1 / 1;
+    z-index:-1;
+  }
+
+  .stars {
+    position: absolute;
+    bottom: 20vh;
+    left: 30vw;
+    width: 200px; /* Adjust as needed */
+    height: 200px; /* Adjust as needed */
+    background-color: #ffffff;
+    color: #1b1b1b;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1.5px solid #1b1b1b;
+    box-shadow: 5px 5px 0px #1b1b1b;
+    cursor: move; /* Indicates draggable */
+    box-sizing: border-box;
+    -webkit-animation-name: slideInLeft;
+    animation-name: slideInLeft;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    z-index:-1;
+}
+
+.stars img {
+    width: 100%;
+    height: auto;
+    pointer-events: none; /* Prevent dragging */
+    animation: rotateCounterclockwise 20s linear infinite;
+}
+
+
+.resizer {
+    width: 10px;
+    height: 10px;
+    background: black;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: se-resize;
+}
+
+@keyframes rotateCounterclockwise {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg); /* Negative value for counterclockwise rotation */
+    }
+}
