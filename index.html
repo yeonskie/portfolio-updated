@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courtney Te</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://use.typekit.net/bwl0azb.css">
+    <link rel="icon" type="image/png" href="1.webp">
+</head>
+<body>
+    <div class="flier"><img src="2.svg"></div>
+    <div class="flower" id="flowerBox">
+        <button class="close-btn">✕</button>
+        <img src="2.svg" alt="Flower Image" class="flower-image">
+    </div>   
+    <div class="music" id="draggableMusic">
+        <button class="close-btn">&times;</button>
+        <marquee>CURRENTLY LISTENING TO: ABCD by NAYEON</marquee>
+    </div>    
+    <div class="rearrange">
+        < TRY REARRANGING THE BOXES >
+    </div>
+    <div class="top-bar">
+        <div class="section left-section">
+            <div class="tooltip-container">
+                <button onclick="window.location.reload();" class="tooltip-button">
+                    <img src="refresh.svg" alt="refresh">
+                    <span class="tooltip-text">refresh</span>
+                </button>
+            </div>
+        </div>
+        <div class="section middle-section">
+            <p>Top Center</p>
+        </div>
+        <div class="section right-section">
+            <p>Top Right</p>
+        </div>
+    </div>
+    <div class="intro">
+        <button class="close-btn">&times;</button>
+        <h1>hi there!</h1>
+        <h2>you've stumbled across my corner of the internet...</h2>
+        <h2>what would you like to see?</h2>
+        <div class="links">
+            <a href="#">design work</a> or <a href="#">about the designer</a>
+        </div>
+    </div>  
+    <div class="overview">
+        <button class="close-btn">&times;</button>
+        <h1 style="text-decoration:underline;">overview</h1>
+        <p>NAME: courtney te</p>
+        <p>AGE: 22</p>
+        <p>SPECIALTIES: motion graphics, vector illustration, web design</p>
+        <p>LIKES: cozy games, the color pink, strange pets</p>
+        <p>STRENGTHS: N/A</p>
+        <p>WEAKNESSES: N/A</p>
+        <p>SEEKING: full-time design positions, commissions</p>
+    </div>
+    <div class="overview2" id="draggableDiv">
+        <button class="close-btn">&times;</button>
+        hello
+    </div>    
+    <div class="bottom-bar">
+        <div class="section left-section">
+            <p>courtney te</p>
+        </div>
+        <div class="section middle-section">
+            <div class="dropdown">
+                <button onclick="toggleDropdown()">
+                    << guide me >>
+                </button>
+                <div id="dropdown-content" class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+        </div>
+        <div class="section right-section">
+            <p>© 2024</p>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
