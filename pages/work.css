@@ -110,7 +110,7 @@ body {
     transform: translateX(-50%);
     background-color: #ffffff;
     min-width: 15vw;
-    z-index: 999;
+    z-index: 1001; /* Higher than .works */
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-top: 1.5px solid #1b1b1b;
@@ -125,6 +125,7 @@ body {
     display: block;
     text-align: center;
     border-bottom: 1.5px solid #cccccc;
+    z-index: 1000;
 }
 
 .dropdown-content a:hover {
@@ -148,11 +149,13 @@ button {
     font-family: "epilogue", sans-serif;
     font-weight: 400;
     font-style: normal;
+    z-index: index 999;
 }
 
 .dropdown button:hover {
     background-color: #1b1b1b;
     color: #f1f1f1;
+    z-index:99999;
 }
 
 .dropdown button:focus {
@@ -174,6 +177,13 @@ button {
         visibility: visible;
     }
 }
+
+/* Ensure .works is positioned absolutely */
+.works {
+    position: absolute; 
+    z-index: 1;
+}
+
 
 @keyframes fadeOut {
     from {
@@ -301,7 +311,7 @@ button {
     text-align: center;
     text-decoration: none;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
     background-color:#fff;
 }
@@ -309,21 +319,18 @@ button {
 /* Button Styling */
 .button-item {
     margin: 5px;
-    padding: 7px;
+    padding: 5px;
     width:300px;
     color:#1b1b1b;
     border: 1.5px solid #1b1b1b;
-    box-shadow: 5px 5px 0px #1b1b1b;
     border-radius: 5px;
     cursor: pointer;
-    font-size:15px;
 }
 
 .button-item:hover {
     background-color: #1b1b1b;
     color:#f1f1f1;
     text-decoration:underline, italic;
-    border:1.5px solid #f1f1f1;
 }
 
 .works {
@@ -337,7 +344,7 @@ button {
     border-radius:5px;
     border:1.5px solid #1b1b1b;
     box-shadow: 5px 5px 0px #1b1b1b;
-    z-index:0;
+    z-index:1;
 }
 
 .works {
@@ -444,19 +451,48 @@ h4:hover {
     visibility: hidden;
     opacity: 0;
     position: absolute;
-    bottom: -20px; /* Adjust to move the text below the button */
+    bottom: -20.5px; /* Adjust to move the text below the button */
     transform: translateX(-50%);
     background-color: #ffffff;
     color: #1b1b1b;
-    padding:4px;
-    width:75px;
+    padding:5px;
+    width:65px;
     border: 1.5px solid #1b1b1b;
     border-radius: 5px;
     font-size: 13px;
     transition: opacity 0.3s ease;
+    font-family: "epilogue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .back-button-container:hover .tooltip-text-back {
     visibility: visible;
     opacity: 1;
+}
+
+#hover-text {
+    position: fixed;
+    left: 5vw;
+    top: 47%;
+    transform: translateY(-50%);
+    color: #1b1b1b;
+    padding: 10px;
+    border-radius: 5px;
+    display: none; /* Hidden by default */
+    z-index: 1000; /* Ensure it's on top of other content */
+    box-sizing: border-box; /* Include padding in width calculation */
+    word-wrap: break-word; 
+    width:350px;
+    height:100px;
+  }
+  
+.button-item data-text {
+    width:100px;
+}
+
+h6 {
+    font-size:20px;
+    margin:10px;
+    text-align:left;
 }

@@ -279,3 +279,68 @@ document.addEventListener('DOMContentLoaded', () => {
       window.history.back(); // Go back to the previous page
   });
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('.button-item');
+  const hoverImage = document.getElementById('hover-image');
+  const hoverText = document.getElementById('hover-text');
+  const hoverTextContent = document.getElementById('hover-text-content');
+
+  buttons.forEach(button => {
+    button.addEventListener('mouseenter', () => {
+      const imageSrc = button.getAttribute('data-image');
+      const textContent = button.getAttribute('data-text');
+
+      if (hoverImage) {
+        hoverImage.src = imageSrc;
+        hoverImage.style.display = 'block'; // Show image
+      }
+
+      if (hoverText) {
+        hoverTextContent.textContent = textContent;
+        hoverText.style.display = 'block'; // Show text
+      }
+    });
+
+    button.addEventListener('mouseleave', () => {
+      if (hoverImage) hoverImage.style.display = 'none'; // Hide image
+      if (hoverText) hoverText.style.display = 'none'; // Hide text
+    });
+  });
+});
+
+
+const buttons = document.querySelectorAll('.button-item');
+const hoverText = document.getElementById('hover-text');
+const hoverTextContent = document.getElementById('hover-text-content');
+
+buttons.forEach(button => {
+    button.addEventListener('mouseenter', () => {
+        const text = button.getAttribute('data-text');
+        hoverTextContent.textContent = text;
+        hoverText.style.display = 'block'; // Show the text
+    });
+
+    button.addEventListener('mouseleave', () => {
+        hoverText.style.display = 'none'; // Hide the text
+    });
+});
+
+document.querySelectorAll('.button-item').forEach(button => {
+  button.addEventListener('mouseenter', () => {
+      const imageSrc = button.getAttribute('data-image');
+      const text = button.getAttribute('data-text');
+
+      document.getElementById('hover-image').src = imageSrc;
+      document.getElementById('hover-text').innerHTML = text; // Use innerHTML to allow HTML tags
+
+      document.getElementById('hover-image').style.display = 'block'; // Show image
+      document.getElementById('hover-text').style.display = 'block'; // Show text
+  });
+
+  button.addEventListener('mouseleave', () => {
+      document.getElementById('hover-image').style.display = 'none'; // Hide image
+      document.getElementById('hover-text').style.display = 'none'; // Hide text
+  });
+});
