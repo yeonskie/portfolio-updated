@@ -271,3 +271,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   sparkle();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const backButton = document.getElementById('back-button');
+
+  backButton.addEventListener('click', () => {
+      window.history.back(); // Go back to the previous page
+  });
+});

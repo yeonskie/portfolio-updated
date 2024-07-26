@@ -390,3 +390,73 @@ h4:hover {
     font-size:13px;
     text-align:center;
 }
+
+.back-button-container {
+    top: 20px; /* Adjust position as needed */
+    left: 20px; /* Adjust position as needed */
+    display:flex;
+    flex-direction: row; 
+}
+
+.back-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding-left: 40px;
+}
+
+.back-button img {
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+}
+
+.back-button:hover img {
+    opacity: 0.8; /* Optional: Add hover effect */
+}
+
+.tooltip-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Ensure tooltips are hidden by default */
+.tooltip-text,
+.tooltip-text-back {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    background-color: #ffffff;
+    color: #1b1b1b;
+    border: 1.5px solid #1b1b1b;
+    border-radius: 5px;
+    font-size: 13px;
+    transition: opacity 0.3s ease;
+}
+
+/* Tooltip for refresh button */
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.back-button-container .tooltip-text-back {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: -20px; /* Adjust to move the text below the button */
+    transform: translateX(-50%);
+    background-color: #ffffff;
+    color: #1b1b1b;
+    padding:4px;
+    width:75px;
+    border: 1.5px solid #1b1b1b;
+    border-radius: 5px;
+    font-size: 13px;
+    transition: opacity 0.3s ease;
+}
+
+.back-button-container:hover .tooltip-text-back {
+    visibility: visible;
+    opacity: 1;
+}
