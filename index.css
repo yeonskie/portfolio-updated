@@ -471,7 +471,7 @@ h2 {
 }
 
 .flier img {
-    width:150px;
+    width:110px;
 }
 
 .flier > * {
@@ -624,10 +624,10 @@ h2 {
 
 .flower {
     position: absolute;
-    top: 20vh;
+    top: 27vh;
     left: 13vw;
-    width: 350px; /* Adjust as needed */
-    height: 350px; /* Adjust as needed */
+    width: 300px; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
     background-color: #ffffff;
     color: #1b1b1b;
     display: flex;
@@ -944,5 +944,17 @@ body {
 }
 
 .name {
+    font-size:50px;
+    position:absolute;
+    z-index:9999;
+    left:4vw;
+    top:15vh;
+}
 
+.portfolio {
+    font-size:20px;
+    position:absolute;
+    z-index:9999;
+    left:15vw;
+    top:21.5vh;
 }
