@@ -369,7 +369,7 @@ h2 {
 .overview {
     position: absolute;
     bottom: 22vh; 
-    right: 4vw; 
+    right: 22vw; 
     width: 15vw;
     height: auto;
     background-color:#ffffff;
@@ -811,7 +811,7 @@ body {
   .statement {
     position: absolute;
     bottom:50vh; 
-    right: 17vw; 
+    right: 8vw; 
     width: 15vw;
     height: 25vh;
     background-color:#ffffff;
