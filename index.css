@@ -979,3 +979,18 @@ body {
 .switch1 .text1 {
     opacity: 1;
 }
+
+.switch2 {
+    display: inline-block;
+    position: relative;
+    cursor:help;
+}
+
+.switch2::before {
+    content: "fun fact!";
+    display: block;
+}
+
+.switch2:hover::before {
+    content: "this website was handmade!";
+}
