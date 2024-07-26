@@ -185,3 +185,61 @@ else {
     document.onmousedown = disableselect;
     document.onmouseup = reEnable;
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const audio = document.getElementById('audio');
+    const playButton = document.getElementById('play');
+    const pauseButton = document.getElementById('pause');
+    const stopButton = document.getElementById('stop');
+    const skipButton = document.getElementById('skip');
+    const songTitle = document.getElementById('song-title');
+
+    // Array of songs
+    const songs = [
+        { title: "Song 1 - Artist", src: "audio/1.mp3" },
+        { title: "Song 2 - Artist", src: "song2.mp3" },
+        { title: "Song 3 - Artist", src: "song3.mp3" }
+    ];
+    let currentSongIndex = 0;
+
+    function playSong() {
+        audio.src = songs[currentSongIndex].src;
+        audio.load(); // Load the new source
+        audio.play().then(() => {
+            console.log(`Playing: ${songs[currentSongIndex].title}`);
+        }).catch(error => {
+            console.error('Error playing the song:', error);
+        });
+    }
+
+    playButton.addEventListener('click', () => {
+        if (audio.paused) {
+            playSong();
+        }
+    });
+
+    pauseButton.addEventListener('click', () => {
+        if (!audio.paused) {
+            audio.pause();
+            console.log('Paused');
+        }
+    });
+
+    stopButton.addEventListener('click', () => {
+        if (!audio.paused) {
+            audio.pause();
+            audio.currentTime = 0;
+            console.log('Stopped');
+        }
+    });
+
+    skipButton.addEventListener('click', () => {
+        currentSongIndex = (currentSongIndex + 1) % songs.length;
+        songTitle.textContent = songs[currentSongIndex].title;
+        playSong();
+        console.log('Skipped to next song');
+    });
+
+    // Initialize the player with the first song
+    songTitle.textContent = songs[currentSongIndex].title;
+});

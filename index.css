@@ -278,6 +278,11 @@ h2 {
     color:#f1f1f1;
 }
 
+.dropdown-content a:hover {
+    background-color:#1b1b1b;
+    color:#f1f1f1;
+}
+
 .links {
     display: flex;
     flex-direction: column; /* Stack links vertically */
@@ -375,18 +380,6 @@ h2 {
 /* Styling for .overview content */
 .overview h1, .overview p, .overview a {
     margin: 0;
-}
-
-.overview a {
-    font-size: 1rem;
-    color: #1a73e8;
-    text-decoration: none;
-    border-bottom: 1px solid #1a73e8;
-}
-
-.overview a:hover {
-    color: #0056b3;
-    border-bottom-color: #0056b3;
 }
 
 
@@ -799,10 +792,10 @@ body {
 
   .statement {
     position: absolute;
-    bottom: 38vh; 
+    bottom:50vh; 
     right: 17vw; 
     width: 15vw;
-    height: auto;
+    height: 18vh;
     background-color:#ffffff;
     color:#1b1b1b;
     display: flex;
@@ -875,3 +868,45 @@ body {
         transform: rotate(-360deg); /* Negative value for counterclockwise rotation */
     }
 }
+
+.music-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    width: 200px;
+    font-family: Arial, sans-serif;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.control-btn {
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.control-btn:hover {
+    background-color: #d0d0d0;
+}
+
+.song-info {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#song-title {
+    font-size: 14px;
+    color: #333;
+}
+
