@@ -110,7 +110,7 @@ body {
     transform: translateX(-50%);
     background-color: #ffffff;
     min-width: 15vw;
-    z-index: 1;
+    z-index: 999;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-top: 1.5px solid #1b1b1b;
@@ -309,7 +309,7 @@ button {
 /* Button Styling */
 .button-item {
     margin: 5px;
-    padding: 10px;
+    padding: 7px;
     width:300px;
     color:#1b1b1b;
     border: 1.5px solid #1b1b1b;
@@ -327,15 +327,17 @@ button {
 }
 
 .works {
-    width:auto;
+    width:500px;
+    position:absolute;
     height:auto;
-    padding:20px;
+    padding:25px;
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically, if needed */
     border-radius:5px;
     border:1.5px solid #1b1b1b;
     box-shadow: 5px 5px 0px #1b1b1b;
+    z-index:0;
 }
 
 .works {
@@ -343,12 +345,13 @@ button {
     width: auto;
     height: auto;
     padding: 25px;
-    padding-top:40px;
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically, if needed */
     box-shadow: 5px 5px 0px #1b1b1b;
     cursor:move;
+    background-color:#fff;
+    z-index:0;
 }
 
 .close-btn {
@@ -365,4 +368,25 @@ button {
 
 .close-btn:hover {
     color: rgb(216, 93, 128);
+}
+
+h4 {
+    font-size:20px;
+    width:200px;
+    text-align:center;
+    text-transform: light;
+    cursor:auto;
+    margin:0;
+    padding:15px;
+}
+
+h4:hover {
+    text-decoration:underline;
+}
+
+.words {
+    width:350px;
+    text-align:left;
+    font-size:13px;
+    text-align:center;
 }
