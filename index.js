@@ -249,3 +249,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize with the first track
     loadTrack(currentTrackIndex);
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const switch1 = document.querySelector('.switch1');
+    const text1 = switch1.querySelector('.text1');
+    const text2 = switch1.querySelector('.text2');
+    
+    let currentText = 1;
+
+    setInterval(() => {
+        if (currentText === 1) {
+            text1.style.opacity = '0';
+            text2.style.opacity = '1';
+            currentText = 2;
+        } else {
+            text1.style.opacity = '1';
+            text2.style.opacity = '0';
+            currentText = 1;
+        }
+    }, 3000); // 3000 ms = 3 seconds
+});
