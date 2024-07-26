@@ -187,59 +187,65 @@ else {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const audio = document.getElementById('audio');
-    const playButton = document.getElementById('play');
-    const pauseButton = document.getElementById('pause');
-    const stopButton = document.getElementById('stop');
-    const skipButton = document.getElementById('skip');
-    const songTitle = document.getElementById('song-title');
+    const audioPlayer = document.getElementById('audioPlayer');
+    const playPauseButton = document.getElementById('playPauseButton');
+    const stopButton = document.getElementById('stopButton');
+    const skipButton = document.getElementById('skipButton');
+    const previousButton = document.getElementById('previousButton');
+    const playlist = document.getElementById('playlist');
+    let currentTrackIndex = 0;
 
-    // Array of songs
-    const songs = [
-        { title: "Song 1 - Artist", src: "audio/1.mp3" },
-        { title: "Song 2 - Artist", src: "song2.mp3" },
-        { title: "Song 3 - Artist", src: "song3.mp3" }
-    ];
-    let currentSongIndex = 0;
-
-    function playSong() {
-        audio.src = songs[currentSongIndex].src;
-        audio.load(); // Load the new source
-        audio.play().then(() => {
-            console.log(`Playing: ${songs[currentSongIndex].title}`);
-        }).catch(error => {
-            console.error('Error playing the song:', error);
-        });
+    function loadTrack(index) {
+        const tracks = playlist.getElementsByTagName('li');
+        if (index >= 0 && index < tracks.length) {
+            audioPlayer.src = tracks[index].getAttribute('data-src');
+            audioPlayer.play();
+            currentTrackIndex = index;
+            updateTrackInfo();
+        }
     }
 
-    playButton.addEventListener('click', () => {
-        if (audio.paused) {
-            playSong();
-        }
-    });
+    function updateTrackInfo() {
+        const tracks = playlist.getElementsByTagName('li');
+        const trackInfo = document.getElementById('trackInfo');
+        trackInfo.textContent = tracks[currentTrackIndex] ? tracks[currentTrackIndex].textContent : 'No track';
+    }
 
-    pauseButton.addEventListener('click', () => {
-        if (!audio.paused) {
-            audio.pause();
-            console.log('Paused');
+    playPauseButton.addEventListener('click', () => {
+        if (audioPlayer.paused) {
+            audioPlayer.play();
+            playPauseButton.textContent = '⏸'; // Change to pause symbol
+        } else {
+            audioPlayer.pause();
+            playPauseButton.textContent = '⏯'; // Change to play symbol
         }
     });
 
     stopButton.addEventListener('click', () => {
-        if (!audio.paused) {
-            audio.pause();
-            audio.currentTime = 0;
-            console.log('Stopped');
-        }
+        audioPlayer.pause();
+        audioPlayer.currentTime = 0;
+        playPauseButton.textContent = '⏯'; // Change to play symbol
     });
 
     skipButton.addEventListener('click', () => {
-        currentSongIndex = (currentSongIndex + 1) % songs.length;
-        songTitle.textContent = songs[currentSongIndex].title;
-        playSong();
-        console.log('Skipped to next song');
+        if (currentTrackIndex < playlist.getElementsByTagName('li').length - 1) {
+            loadTrack(currentTrackIndex + 1);
+        }
     });
 
-    // Initialize the player with the first song
-    songTitle.textContent = songs[currentSongIndex].title;
+    previousButton.addEventListener('click', () => {
+        if (currentTrackIndex > 0) {
+            loadTrack(currentTrackIndex - 1);
+        }
+    });
+
+    playlist.addEventListener('click', (event) => {
+        if (event.target.tagName === 'LI') {
+            const index = Array.from(playlist.getElementsByTagName('li')).indexOf(event.target);
+            loadTrack(index);
+        }
+    });
+
+    // Initialize with the first track
+    loadTrack(currentTrackIndex);
 });

@@ -7,11 +7,15 @@ img {
     max-width: 100%;
 }
 
-body {
-    margin: 0;
+.everything {
+    margin:0;
     display: flex;
     justify-content: center;
     align-items: flex-end;
+}
+
+body {
+    margin: 0;
     height: 100vh;
     background-color: #ffffff;
     font-family: "epilogue", sans-serif;
@@ -193,10 +197,6 @@ body {
 
 .intro {
     background-color:#ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 20px;
     border-radius: 8px;
     border:2px solid #1b1b1b;    
@@ -204,7 +204,24 @@ body {
     box-shadow: 5px 5px 0px #1b1b1b;
     font-size:13px;
     color: #1b1b1b;
+    margin:0;
 }
+
+/* Ensure .intro-wrap takes up full height of the viewport */
+.intro-wrap {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    height: 100vh;           /* Full viewport height */
+}
+
+.intro {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: Add shadow for better visibility */
+    background-color: #fff; /* Optional: Set background color */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    margin-right:5vw;
+}
+
 
 .location {
     position:absolute;
@@ -278,7 +295,7 @@ h2 {
     color:#f1f1f1;
 }
 
-.dropdown-content a:hover {
+.dropdown-content a:hovers {
     background-color:#1b1b1b;
     color:#f1f1f1;
 }
@@ -795,7 +812,7 @@ body {
     bottom:50vh; 
     right: 17vw; 
     width: 15vw;
-    height: 18vh;
+    height: 25vh;
     background-color:#ffffff;
     color:#1b1b1b;
     display: flex;
@@ -869,44 +886,60 @@ body {
     }
 }
 
+
+#playlist li:hover {
+    background-color: #efefef; /* Highlight on hover */
+}
+
 .music-player {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #ffffff;
-    padding: 10px;
-    border-radius: 8px;
-    width: 200px;
-    font-family: Arial, sans-serif;
+    width: 15vw;
 }
 
 .controls {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
 }
 
-.control-btn {
-    background-color: #f1f1f1;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    padding: 10px;
+.controls button {
+    margin: 5px 5px; /* Space between buttons */
+}
+
+#playlist {
+    list-style: none;
+    padding: 0;
+    margin:0;
+    width: 100%;
+}
+
+#playlist li {
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.control-btn:hover {
-    background-color: #d0d0d0;
-}
-
-.song-info {
-    margin-top: 10px;
+    padding: 5px;
+    border-bottom: 1.5px solid #1b1b1b;
     text-align: center;
+    font-size:13px;
 }
 
-#song-title {
-    font-size: 14px;
-    color: #333;
+#playlist li:hover {
+    background-color: #efefef; /* Highlight on hover */
 }
 
+.controls button {
+    font-size: 24px; /* Adjust the size as needed */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px;
+}
+
+.controls button:hover {
+    background-color: #efefef; /* Highlight on hover */
+}
+
+.name {
+
+}
