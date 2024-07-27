@@ -328,19 +328,19 @@ buttons.forEach(button => {
 });
 
 document.querySelectorAll('.button-item').forEach(button => {
-  button.addEventListener('mouseenter', () => {
-      const imageSrc = button.getAttribute('data-image');
-      const text = button.getAttribute('data-text');
+    button.addEventListener('mouseenter', () => {
+        const imageSrc = button.getAttribute('data-image');
+        const text = button.getAttribute('data-text');
 
-      document.getElementById('hover-image').src = imageSrc;
-      document.getElementById('hover-text').innerHTML = text; // Use innerHTML to allow HTML tags
+        document.getElementById('hover-image').src = imageSrc;
+        document.getElementById('hover-text').innerHTML = text; // Use innerHTML to allow HTML tags
 
-      document.getElementById('hover-image').style.display = 'block'; // Show image
-      document.getElementById('hover-text').style.display = 'block'; // Show text
-  });
+        document.getElementById('hover-image').style.display = 'block'; // Show image
+        document.getElementById('hover-text').style.display = 'block'; // Show text
+    });
 
-  button.addEventListener('mouseleave', () => {
-      document.getElementById('hover-image').style.display = 'none'; // Hide image
-      document.getElementById('hover-text').style.display = 'none'; // Hide text
-  });
+    button.addEventListener('mouseleave', () => {
+        document.getElementById('hover-image').style.display = 'none'; // Hide image
+        document.getElementById('hover-text').style.display = 'none'; // Hide text
+    });
 });
