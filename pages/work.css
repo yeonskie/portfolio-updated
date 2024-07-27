@@ -66,6 +66,7 @@ body {
     color: white;
     display: flex;
     border-top: 1.5px solid #1b1b1b;
+    z-index:1000;
 }
 
 .section {
@@ -110,7 +111,6 @@ body {
     transform: translateX(-50%);
     background-color: #ffffff;
     min-width: 15vw;
-    z-index: 1001; /* Higher than .works */
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-top: 1.5px solid #1b1b1b;
@@ -126,11 +126,13 @@ body {
     text-align: center;
     border-bottom: 1.5px solid #cccccc;
     z-index: 1000;
+    background-color:white;
 }
 
 .dropdown-content a:hover {
     background-color: #1b1b1b;
     color: #f1f1f1;
+    z-index: 1001;
 }
 
 button {
@@ -149,13 +151,12 @@ button {
     font-family: "epilogue", sans-serif;
     font-weight: 400;
     font-style: normal;
-    z-index: index 999;
+    z-index: 1001;
 }
 
 .dropdown button:hover {
     background-color: #1b1b1b;
     color: #f1f1f1;
-    z-index:99999;
 }
 
 .dropdown button:focus {
@@ -181,7 +182,7 @@ button {
 /* Ensure .works is positioned absolutely */
 .works {
     position: absolute; 
-    z-index: 1;
+    z-index: 0;
 }
 
 
@@ -272,6 +273,7 @@ button {
     display: flex;
     flex-direction: column; 
     align-items: center;
+    z-index:0;
 }
 
 
@@ -344,7 +346,6 @@ button {
     border-radius:5px;
     border:1.5px solid #1b1b1b;
     box-shadow: 5px 5px 0px #1b1b1b;
-    z-index:1;
 }
 
 .works {
@@ -358,7 +359,6 @@ button {
     box-shadow: 5px 5px 0px #1b1b1b;
     cursor:move;
     background-color:#fff;
-    z-index:0;
 }
 
 .close-btn {
@@ -495,4 +495,21 @@ h6 {
     font-size:20px;
     margin:10px;
     text-align:left;
+}
+
+.container {
+    z-index:0;
+}
+
+.more {
+    margin-top:10px;
+    font-size:13px;
+}
+
+.more a {
+    color:#1b1b1b;
+}
+
+.more a:hover {
+    color:#ccc;
 }
