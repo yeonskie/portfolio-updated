@@ -476,7 +476,7 @@ h4:hover {
 #hover-text {
     position: fixed;
     right: 9vw;
-    top: 47%;
+    top: 50%;
     transform: translateY(-50%);
     color: #1b1b1b;
     padding: 13px;
@@ -488,6 +488,7 @@ h4:hover {
     word-wrap: break-word; 
     width:350px;
     height:auto;
+    font-size:13px;
     border:1.5px solid #1b1b1b;
     box-shadow: 5px 5px 0px #1b1b1b;
   }
