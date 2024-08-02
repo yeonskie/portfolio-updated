@@ -273,7 +273,7 @@ button {
     display: flex;
     flex-direction: column; 
     align-items: center;
-    z-index:0;
+    z-index:9999;
 }
 
 
@@ -290,21 +290,24 @@ button {
 /* Image Container Styling */
 .image-container {
     position: fixed;
-    right: 10vw;
+    left: 6vw;
     top: 50%;
     transform: translateY(-50%);
     width: 350px;
-    height: 350px;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius:5px;
 }
 
+
 #hover-image {
     max-width: 100%;
     max-height: 100%;
     display: none;
+    padding:10px;
+    border:1.5px solid #1b1b1b;
 }
 
 .button-item {
@@ -472,20 +475,23 @@ h4:hover {
 
 #hover-text {
     position: fixed;
-    left: 5vw;
+    right: 9vw;
     top: 47%;
     transform: translateY(-50%);
     color: #1b1b1b;
-    padding: 10px;
+    padding: 13px;
+    padding-bottom:20px;
     border-radius: 5px;
     display: none; /* Hidden by default */
     z-index: 1000; /* Ensure it's on top of other content */
     box-sizing: border-box; /* Include padding in width calculation */
     word-wrap: break-word; 
     width:350px;
-    height:100px;
+    height:auto;
+    border:1.5px solid #1b1b1b;
+    box-shadow: 5px 5px 0px #1b1b1b;
   }
-  
+
 .button-item data-text {
     width:100px;
 }
