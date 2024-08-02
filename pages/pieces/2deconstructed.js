@@ -1,3 +1,7 @@
+document.getElementById('back-button').addEventListener('click', function() {
+  window.history.back();
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     // Dropdown Menu Functionality
     const dropdownButton = document.querySelector('.dropdown-button');
@@ -272,4 +276,48 @@ window.addEventListener('click', (event) => {
             dropdownContent.classList.remove('show');
         }
     }
+});
+
+// script.js
+document.addEventListener('DOMContentLoaded', () => {
+  const piece = document.querySelector('.piece');
+  const magnifier = document.createElement('div');
+  magnifier.classList.add('magnifier');
+  document.body.appendChild(magnifier);
+  
+  let isEnlarged = false;
+
+  piece.addEventListener('click', () => {
+      isEnlarged = !isEnlarged;
+      piece.classList.toggle('enlarged', isEnlarged);
+      magnifier.style.display = isEnlarged ? 'block' : 'none';
+  });
+
+  piece.addEventListener('mousemove', (e) => {
+      if (isEnlarged) {
+          const rect = piece.getBoundingClientRect();
+          const img = piece.querySelector('img');
+          const offsetX = e.clientX - rect.left - window.scrollX;
+          const offsetY = e.clientY - rect.top - window.scrollY;
+
+          // Adjust the background image to zoom in on the cursor position
+          magnifier.style.backgroundImage = `url(${img.src})`;
+          magnifier.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`; // Image is 200% bigger
+          magnifier.style.backgroundPosition = `-${offsetX * 2 - magnifier.offsetWidth / 2}px -${offsetY * 2 - magnifier.offsetHeight / 2}px`; // Center the magnified area
+          magnifier.style.left = `${e.clientX}px`;
+          magnifier.style.top = `${e.clientY}px`;
+      }
+  });
+
+  piece.addEventListener('mouseleave', () => {
+      if (isEnlarged) {
+          magnifier.style.display = 'none';
+      }
+  });
+
+  piece.addEventListener('mouseenter', () => {
+      if (isEnlarged) {
+          magnifier.style.display = 'block';
+      }
+  });
 });

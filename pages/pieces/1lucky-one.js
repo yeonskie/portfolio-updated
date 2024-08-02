@@ -1,3 +1,7 @@
+document.getElementById('back-button').addEventListener('click', function() {
+  window.history.back();
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   // Dropdown Menu Functionality
   const dropdownButton = document.querySelector('.dropdown-button');
