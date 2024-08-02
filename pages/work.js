@@ -38,9 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
-  // Initialize draggable functionality
-  const works = document.querySelector('.works');
-  makeDraggable(works);
 
   // Close button functionality
   const closeButton = document.querySelector('.close-btn');

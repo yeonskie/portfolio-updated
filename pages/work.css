@@ -357,7 +357,6 @@ button {
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically, if needed */
     box-shadow: 5px 5px 0px #1b1b1b;
-    cursor:move;
     background-color:#fff;
 }
 
