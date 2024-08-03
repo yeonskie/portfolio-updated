@@ -198,15 +198,23 @@ body {
 
 
 .intro {
-    background-color:#ffffff;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
-    border:2px solid #1b1b1b;    
-    padding-bottom:20px;
+    border: 2px solid #1b1b1b;    
+    padding-bottom: 20px;
     box-shadow: 5px 5px 0px #1b1b1b;
-    font-size:13px;
+    font-size: 13px;
     color: #1b1b1b;
-    margin:0;
+    margin: 0;
+    cursor: move; /* Change cursor to indicate draggable */
+    animation: fadeIn 1s ease-in-out;
+    -webkit-animation-name: zoomIn;
+    animation-name: zoomIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
 }
 
 .intro-wrap {
@@ -218,7 +226,6 @@ body {
 }
 
 .intro {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: Add shadow for better visibility */
     background-color: #fff; /* Optional: Set background color */
     border-radius: 8px; /* Optional: Add rounded corners */
 }
@@ -240,7 +247,7 @@ body {
     border-radius: 8px;
     border:2px solid #1b1b1b;    
     padding-bottom:20px;
-    box-shadow: 5px 5px 0px #1b1b1b;
+    box-shadow: 5px 5px 0px 0px #1b1b1b;
     font-size:20px;
     color: #1b1b1b;
     -webkit-animation-name: slideInRight;
@@ -253,6 +260,7 @@ body {
 
 .intro p {
     margin: 0 0 10px 0;
+    box-shadow: 5px 5px 0px #1b1b1b;
 }
 
 .intro a {
