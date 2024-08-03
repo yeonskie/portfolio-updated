@@ -1,3 +1,7 @@
+document.getElementById('back-button').addEventListener('click', function() {
+  window.history.back();
+});
+
 // Draggable Function
 function makeDraggable(element) {
     let offsetX, offsetY, isDragging = false;
