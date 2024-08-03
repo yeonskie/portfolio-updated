@@ -1,89 +1,100 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Draggable functionality
-  function makeDraggable(element) {
+    // Draggable functionality
+    function makeDraggable(element) {
       let isDragging = false;
       let offsetX, offsetY;
-
+  
       element.addEventListener('mousedown', (e) => {
-          isDragging = true;
-          // Get the current position of the element
-          const rect = element.getBoundingClientRect();
-          offsetX = e.clientX - rect.left;
-          offsetY = e.clientY - rect.top;
-
-          // Function to handle mouse movement
-          const onMouseMove = (e) => {
-              if (isDragging) {
-                  // Calculate new position
-                  const x = e.clientX - offsetX;
-                  const y = e.clientY - offsetY;
-
-                  // Set the new position
-                  element.style.position = 'absolute'; // Ensure it's positioned absolutely
-                  element.style.left = `${x}px`;
-                  element.style.top = `${y}px`;
-              }
-          };
-
-          // Function to stop dragging
-          const stopDragging = () => {
-              isDragging = false;
-              document.removeEventListener('mousemove', onMouseMove);
-              document.removeEventListener('mouseup', stopDragging);
-          };
-
-          // Attach mousemove and mouseup event listeners
-          document.addEventListener('mousemove', onMouseMove);
-          document.addEventListener('mouseup', stopDragging);
-      });
-  }
-
-
-  // Close button functionality
-  const closeButton = document.querySelector('.close-btn');
-  closeButton.addEventListener('click', () => {
-      works.style.display = 'none'; // Hide the .works container
-  });
-
-  // Dropdown menu functionality
-  function toggleDropdown() {
-      const dropdownContent = document.getElementById('dropdown-content');
-      dropdownContent.classList.toggle('show');
-  }
-
-  // Close Dropdown Menu if clicking outside
-  window.addEventListener('click', (event) => {
-      if (!event.target.matches('.dropdown button')) {
-          const dropdowns = document.getElementsByClassName('dropdown-content');
-          for (let i = 0; i < dropdowns.length; i++) {
-              const openDropdown = dropdowns[i];
-              if (openDropdown.classList.contains('show')) {
-                  openDropdown.classList.remove('show');
-              }
+        isDragging = true;
+        const rect = element.getBoundingClientRect();
+        offsetX = e.clientX - rect.left;
+        offsetY = e.clientY - rect.top;
+  
+        const onMouseMove = (e) => {
+          if (isDragging) {
+            const x = e.clientX - offsetX;
+            const y = e.clientY - offsetY;
+            element.style.position = 'absolute';
+            element.style.left = `${x}px`;
+            element.style.top = `${y}px`;
           }
+        };
+  
+        const stopDragging = () => {
+          isDragging = false;
+          document.removeEventListener('mousemove', onMouseMove);
+          document.removeEventListener('mouseup', stopDragging);
+        };
+  
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('mouseup', stopDragging);
+      });
+    }
+  
+    // Close button functionality
+    const closeButton = document.querySelector('.close-btn');
+    if (closeButton) {
+      closeButton.addEventListener('click', () => {
+        const works = document.querySelector('.works');
+        if (works) works.style.display = 'none';
+      });
+    }
+  
+    // Dropdown menu functionality
+    function toggleDropdown() {
+      const dropdownContent = document.getElementById('dropdown-content');
+      if (dropdownContent) {
+        dropdownContent.classList.toggle('show');
       }
-  });
-
-  // Attach dropdown button click event
-  const dropdownButton = document.querySelector('.dropdown button');
-  dropdownButton.addEventListener('click', toggleDropdown);
-
-  // Image hover functionality
-  const buttons = document.querySelectorAll('.button-item');
-  const hoverImage = document.getElementById('hover-image');
-
-  buttons.forEach(button => {
+    }
+  
+    // Close Dropdown Menu if clicking outside
+    window.addEventListener('click', (event) => {
+      if (!event.target.matches('.dropdown button')) {
+        const dropdowns = document.getElementsByClassName('dropdown-content');
+        for (let i = 0; i < dropdowns.length; i++) {
+          const openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    });
+  
+    // Attach dropdown button click event
+    const dropdownButton = document.querySelector('.dropdown button');
+    if (dropdownButton) {
+      dropdownButton.addEventListener('click', toggleDropdown);
+    }
+  
+    // Image hover functionality
+    const buttons = document.querySelectorAll('.button-item');
+    const hoverImage = document.getElementById('hover-image');
+    const hoverText = document.getElementById('hover-text');
+    const hoverTextContent = document.getElementById('hover-text-content');
+  
+    buttons.forEach(button => {
       button.addEventListener('mouseenter', () => {
-          const imageSrc = button.getAttribute('data-image');
+        const imageSrc = button.getAttribute('data-image');
+        const textContent = button.getAttribute('data-text');
+  
+        if (hoverImage) {
           hoverImage.src = imageSrc;
-          hoverImage.style.display = 'block'; // Show image
+          hoverImage.style.display = 'block';
+        }
+  
+        if (hoverText) {
+          hoverTextContent.innerHTML = textContent;
+          hoverText.style.display = 'block';
+        }
       });
-
+  
       button.addEventListener('mouseleave', () => {
-          hoverImage.style.display = 'none'; // Hide image
+        if (hoverImage) hoverImage.style.display = 'none';
+        if (hoverText) hoverText.style.display = 'none';
       });
-  });
-
+    });
+    
   // Sparkle effect
   let colour = "#1b1b1b";
   let sparkles = 50;
