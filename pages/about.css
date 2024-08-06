@@ -410,17 +410,53 @@ body {
 }
 
 .picture {
-    width:163px;
-    height:163px;
+    width:200px;
+    height:200px;
     border:1.5px solid #1b1b1b;
     position:relative;
     padding:5px;
     margin-right:3vw;
     border-radius:5px;
     box-shadow: 5px 5px 0px #1b1b1b;
+    margin-top:4vh;
 }
 
 .picture img {
-    width:150px;
+    width:187px;
     height:auto;
+    padding:5px;
+}
+
+.button-container {
+    position: relative;
+    display: inline-block;
+}
+
+#text3-btn {
+    font-weight:bold;
+}
+
+.hover-text {
+    background-color: rgb(255, 255, 255);
+    color: #1b1b1b;
+    text-align: center;
+    border-radius: 6px;
+    z-index: 1;
+    opacity: 0;
+    height:auto;
+    transition: opacity 0.3s;
+    position:absolute;
+    left:175px;
+    width:100px;
+    top:40px;
+    font-size:13px;
+    font-style:bold;
+    font-weight:800;
+    padding:5px;
+    border:1.5px solid #1b1b1b;
+}
+
+#text3-btn:hover + .hover-text {
+    visibility: visible;
+    opacity: 1;
 }

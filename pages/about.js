@@ -379,20 +379,22 @@ document.getElementById('back-button').addEventListener('click', function() {
 
     document.getElementById('bio-btn').addEventListener('click', () => {
         textElement.innerHTML = `
-<b>Courtney Te</b> (she/her) is a Cambodian-American graphic designer and artist residing in the Northern Virginia and D.C. Metropolitan area. <br><br>
-Her family originates from Battambang, Cambodia, prior to the Khmer Rouge / Killing Fields of 1975 to 1979. 
- <br><br>
-After her parents immigrated to the United States in the 1980’s, Courtney’s identity was shaped by the stories of her family’s past, her journey with mental health, and her relationship with her body. 
+<b>Courtney Te</b> (she/her) is a 22-year-old Cambodian-American woman born in Virginia, USA. She attended VCUArts from 2020 to 2024, graduating with a degree in Graphic Design and a minor in Psychology.
+<br><br>
+Her family originates from Battambang, Cambodia, prior to the Khmer Rouge / Killing Fields of 1975 to 1979. After her parents immigrated to the United States as refugees in the 1980’s, Courtney’s identity was shaped by the stories of her family’s past, her journey with mental health, and her healing relationship with her body.
+<br><br>
+As a child, Courtney was always creative-minded, with a love for books and fantasy. Although her career trajectory changes, she continuously strives to be in enviornments that fufill her need to imagine and create on a deeper level.
         `;
     });
 
     document.getElementById('prof-btn').addEventListener('click', () => {
         textElement.innerHTML = `
-She recieved her BFA in Graphic Design from VCUArts in May 2024.
- <br><br>
-She specializes in motion graphics and zine design, with her latest project LUCKY ONE being distributed as a physical zine (OPEN HOUSE: GDES Spring 2024 Senior Show) and an interactive website in May 2024, funded by a VCUArts Undergraduate Research grant.
- <br><br>
-It was made in collaboration with VCU students Rohan Nair (web developer), Zoraz Haseeb (web developer), and Emily Richardson (communications).
+<b>Courtney Te</b> (she/her) is a Cambodian-American graphic designer and artist residing in the Northern Virginia and D.C. Metropolitan area. She is a recent graduate from VCUArts, where she recieved her Bachelor of Fine Arts in Graphic Design in May 2024. She specializes in motion graphics, zine design, and more recently has developed an interest in web design/coding. 
+<br><br>
+Originally wanting to be a writer, Courtney took an interest in her high school's journalism class where she was introduced to InDesign and layout design. She later explored kinetic typography videos and the editing community on social media that inspired her to pick up animation as a hobby. It later turned to a desire to keep creating, hence why a lot of her work tends to combine her love of design with her own writing. 
+<br><br>
+Her latest project LUCKY ONE was distributed as a physical zine (OPEN HOUSE: GDES Spring 2024 Senior Show) and an interactive website in May 2024, funded by a VCUArts Undergraduate Research grant. It addressed the harm of the model minority myth, specifically on Asian communities. <br><br>
+It was made in collaboration with VCU students Rohan Nair (Web Developer), Zoraz Haseeb (Web Developer), and Emily Richardson (Communications Director). Courtney was the Creative Director and leader of the project.
         `;
     });
 
@@ -420,5 +422,23 @@ document.addEventListener('DOMContentLoaded', () => {
     images[currentIndex].classList.add('active');
 
     // Change image every 2 seconds
-    setInterval(showNextImage, 2000);
+    setInterval(showNextImage, 2500);
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const images = document.querySelectorAll('.picture .slider-image');
+  let currentIndex = 0;
+
+  function showNextImage() {
+      images[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + 1) % images.length;
+      images[currentIndex].classList.add('active');
+  }
+
+  // Initialize the first image as visible
+  images[currentIndex].classList.add('active');
+
+  // Change image every 2 seconds
+  setInterval(showNextImage, 2000);
 });
