@@ -371,6 +371,7 @@ a.hover-button {
     border:1.5px solid #1b1b1b;
     border-radius:5px;
     background-color:white;
+    margin:0;
 }
 
 .hover-text a {
@@ -390,8 +391,8 @@ a.hover-button {
 .button-wrapper {
     width:auto;
     height:200px;
+    margin:0;
 }
-
 
 a.hover-button {
     padding:20px;
@@ -401,6 +402,7 @@ a.hover-button {
     margin-top:60px;
     margin-right:10px;
     margin-left:10px;
+    margin-bottom:0;
     border-radius:5px;
     background-color:white;
     box-shadow: 5px 5px 0px 0px #1b1b1b;
@@ -505,12 +507,14 @@ a.hover-button.active {
 .contact-txt {
     font-size:45px;
     font-weight:800;
+    gap:100px;
 }
 
 .description {
     font-size:13px;
     text-align:center;
     width:370px;
+    padding:100px;
 }
 
 /* Ensure parent container is set up for centering */
@@ -521,6 +525,8 @@ a.hover-button.active {
     justify-content: center; /* Center items vertically (if height is defined) */
     text-align: center; /* Center text inside child elements */
     margin-right:50px;
+    padding:30px;
+    border-radius:5px;
 }
 
 /* Additional styling for contact-txt and description if needed */
