@@ -374,3 +374,51 @@ document.getElementById('back-button').addEventListener('click', function() {
     });
   });
   
+  document.addEventListener('DOMContentLoaded', () => {
+    const textElement = document.querySelector('.text');
+
+    document.getElementById('bio-btn').addEventListener('click', () => {
+        textElement.innerHTML = `
+<b>Courtney Te</b> (she/her) is a Cambodian-American graphic designer and artist residing in the Northern Virginia and D.C. Metropolitan area. <br><br>
+Her family originates from Battambang, Cambodia, prior to the Khmer Rouge / Killing Fields of 1975 to 1979. 
+ <br><br>
+After her parents immigrated to the United States in the 1980’s, Courtney’s identity was shaped by the stories of her family’s past, her journey with mental health, and her relationship with her body. 
+        `;
+    });
+
+    document.getElementById('prof-btn').addEventListener('click', () => {
+        textElement.innerHTML = `
+She recieved her BFA in Graphic Design from VCUArts in May 2024.
+ <br><br>
+She specializes in motion graphics and zine design, with her latest project LUCKY ONE being distributed as a physical zine (OPEN HOUSE: GDES Spring 2024 Senior Show) and an interactive website in May 2024, funded by a VCUArts Undergraduate Research grant.
+ <br><br>
+It was made in collaboration with VCU students Rohan Nair (web developer), Zoraz Haseeb (web developer), and Emily Richardson (communications).
+        `;
+    });
+
+    document.getElementById('text3-btn').addEventListener('click', () => {
+        textElement.innerHTML = `
+            <b>Text 3:</b> <br>
+            <i>Some other interesting information.</i> <br>
+            <u>With different formatting styles.</u> <br>
+            <p>Other relevant content can be included here.</p>
+        `;
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const images = document.querySelectorAll('.picture .slider-image');
+    let currentIndex = 0;
+
+    function showNextImage() {
+        images[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add('active');
+    }
+
+    // Initialize the first image as visible
+    images[currentIndex].classList.add('active');
+
+    // Change image every 2 seconds
+    setInterval(showNextImage, 2000);
+});
