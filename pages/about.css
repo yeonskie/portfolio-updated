@@ -348,7 +348,7 @@ body {
     border-top-right-radius:5px;
     border-bottom-left-radius:5px;
     border-bottom-right-radius:5px;
-    width: 30vw;
+    width: 25vw;
     height:auto;
     box-shadow: 5px 5px 0px #1b1b1b;
 }
@@ -459,4 +459,22 @@ body {
 #text3-btn:hover + .hover-text {
     visibility: visible;
     opacity: 1;
+}
+
+.abouttxt {
+  position:absolute;
+  font-size:18px;
+  bottom:34vh;
+  left:32vw;
+  border:1.5px solid #1b1b1b;
+  border-radius:5px;
+  padding-left:10px;
+  padding-right:10px;
+  padding-top:10px;
+  padding-bottom:5px;
+  font-style:bold;
+  background-color:white;
+  font-weight:800;
+  z-index:1;
+  box-shadow: 5px 5px 0px #1b1b1b;
 }

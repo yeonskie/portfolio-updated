@@ -389,12 +389,11 @@ As a child, Courtney was always creative-minded, with a love for books and fanta
 
     document.getElementById('prof-btn').addEventListener('click', () => {
         textElement.innerHTML = `
-<b>Courtney Te</b> (she/her) is a Cambodian-American graphic designer and artist residing in the Northern Virginia and D.C. Metropolitan area. She is a recent graduate from VCUArts, where she recieved her Bachelor of Fine Arts in Graphic Design in May 2024. She specializes in motion graphics, zine design, and more recently has developed an interest in web design/coding. 
+<b>Courtney Te</b> (she/her) is a Cambodian-American graphic designer and artist residing in the Northern Virginia and D.C. Metropolitan area. She is a recent graduate from VCUArts, where she recieved her Bachelor of Fine Arts in Graphic Design in May 2024. She specializes in motion graphics, zine design, and more recently developed an interest in web design/coding. 
 <br><br>
-Originally wanting to be a writer, Courtney took an interest in her high school's journalism class where she was introduced to InDesign and layout design. She later explored kinetic typography videos and the editing community on social media that inspired her to pick up animation as a hobby. It later turned to a desire to keep creating, hence why a lot of her work tends to combine her love of design with her own writing. 
+She currently works at Get Social RVA as a contracted Graphic Designer who helps with brand guidelines, motion graphics, and social media design. She was a Graphic Design Intern at Hagos Marketing during the Fall of 2023. She has taken on individual commissions through her TikTok and Instagram, @coverydesigns.
 <br><br>
-Her latest project LUCKY ONE was distributed as a physical zine (OPEN HOUSE: GDES Spring 2024 Senior Show) and an interactive website in May 2024, funded by a VCUArts Undergraduate Research grant. It addressed the harm of the model minority myth, specifically on Asian communities. <br><br>
-It was made in collaboration with VCU students Rohan Nair (Web Developer), Zoraz Haseeb (Web Developer), and Emily Richardson (Communications Director). Courtney was the Creative Director and leader of the project.
+Courtney's latest project LUCKY ONE was distributed as a physical zine (OPEN HOUSE: GDES Spring 2024 Senior Show) and an interactive website in May 2024. It was funded by a VCUArts Undergraduate Research grant about addressing the harm of the model minority myth, specifically on Asian communities.
         `;
     });
 
@@ -422,7 +421,7 @@ document.addEventListener('DOMContentLoaded', () => {
     images[currentIndex].classList.add('active');
 
     // Change image every 2 seconds
-    setInterval(showNextImage, 2500);
+    setInterval(showNextImage, 3500);
 });
 
 
