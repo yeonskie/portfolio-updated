@@ -373,4 +373,48 @@ document.getElementById('back-button').addEventListener('click', function() {
         }
     });
   });
-  
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Define hover text with HTML content
+    const hoverTexts = [
+        '<b>PERSONAL: <a href="mailto:courtney.te24@gmail.com">courtney.te24@gmail.com</a><br><br><b>COMMISSIONS: </b><a href="mailto:coverydesigns@gmail.com">coverydesigns@gmail.com</a><br><br>',
+
+        '<b>PERSONAL:</b> <a href="https://www.instagram.com/courtney.te">@courtney.te</a><br><br><b>ART:</b> <a href="https://www.instagram.com/coverydesigns">@coverydesigns</a>', // HTML for Button 2
+
+        '<b>PERSONAL:</b> <a href="https://www.tiktok.com/@coverydesigns">@coverydesigns</a>' // HTML for Button 3
+    ];
+
+    document.querySelectorAll('.hover-button').forEach((button, index) => {
+        const hoverText = button.nextElementSibling;
+        const textContent = hoverTexts[index];
+        hoverText.querySelector('.text-content').innerHTML = textContent;
+
+        button.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent the default link behavior
+
+            // Hide all hover texts and remove 'active' class from all buttons
+            document.querySelectorAll('.hover-text').forEach(text => {
+                text.style.display = 'none';
+                text.previousElementSibling.classList.remove('active');
+            });
+
+            // Toggle the visibility of the current hover text
+            if (hoverText.style.display === 'block') {
+                hoverText.style.display = 'none';
+                button.classList.remove('active');
+            } else {
+                hoverText.style.display = 'block';
+                button.classList.add('active');
+            }
+        });
+    });
+
+    document.querySelectorAll('.close-btn').forEach(btn => {
+        btn.addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent the event from bubbling up
+            const hoverText = btn.closest('.hover-text');
+            hoverText.style.display = 'none'; // Hide the hover text
+            hoverText.previousElementSibling.classList.remove('active');
+        });
+    });
+});
