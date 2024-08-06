@@ -399,10 +399,7 @@ Courtney's latest project LUCKY ONE was distributed as a physical zine (OPEN HOU
 
     document.getElementById('text3-btn').addEventListener('click', () => {
         textElement.innerHTML = `
-            <b>Text 3:</b> <br>
-            <i>Some other interesting information.</i> <br>
-            <u>With different formatting styles.</u> <br>
-            <p>Other relevant content can be included here.</p>
+            Coming soon!
         `;
     });
 });
