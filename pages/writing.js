@@ -374,3 +374,17 @@ document.getElementById('back-button').addEventListener('click', function() {
     });
   });
   
+
+  document.getElementById('lightswitch').addEventListener('click', function() {
+    var img = this.querySelector('img');
+    if (document.body.style.backgroundColor === 'rgb(27, 27, 27)') {
+      document.body.style.backgroundColor = '#ffffff'; // Light mode
+      img.src = '../images/sun.svg';
+      img.alt = 'Switch to Dark Mode';
+    } else {
+      document.body.style.backgroundColor = '#1b1b1b'; // Dark mode
+      img.src = '../images/lm-sun.svg';
+      img.alt = 'Switch to Light Mode';
+    }
+  });
+  
