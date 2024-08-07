@@ -360,6 +360,7 @@ button {
     border-radius:5px;
     width:515px;
     display:flex;
+    box-shadow: 5px 5px 0px 0px #1b1b1b;
 }
 
 .text1 {
