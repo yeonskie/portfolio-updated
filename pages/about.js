@@ -379,27 +379,36 @@ document.getElementById('back-button').addEventListener('click', function() {
 
     document.getElementById('bio-btn').addEventListener('click', () => {
         textElement.innerHTML = `
-<b>Courtney Te</b> (she/her) is a 22-year-old Cambodian-American woman born in Virginia, USA. She attended VCUArts from 2020 to 2024, graduating with a degree in Graphic Design and a minor in Psychology.
+
+I am a 22-year-old Cambodian-American woman born in Virginia, USA. I attended VCUArts from 2020 to 2024, graduating with a BFA degree in Graphic Design and a minor in Psychology.
 <br><br>
-Her family originates from Battambang, Cambodia, prior to the Khmer Rouge / Killing Fields of 1975 to 1979. After her parents immigrated to the United States as refugees in the 1980’s, Courtney’s identity was shaped by the stories of her family’s past, her journey with mental health, and her healing relationship with her body.
+My family originated from Battambang, Cambodia, prior to the Khmer Rouge / Killing Fields of 1975 to 1979. After my parents immigrated to the United States as refugees in the 1980’s, my identity was shaped by the stories of my family's past, mu journey with mental health, and my healing relationship with my body.
 <br><br>
-As a child, Courtney was always creative-minded, with a love for books and fantasy. Although her career trajectory changes, she continuously strives to be in enviornments that fufill her need to imagine and create on a deeper level.
+As a child, I was always creative-minded, with a love for books and fantasy. I wanted to become a writer one day, an author of young adult fantasy novels, just like my favorite ones I read as a kid. Over time, my love for writing became a love for creation in general, and it led me to the path of going to art school.
         `;
     });
 
     document.getElementById('prof-btn').addEventListener('click', () => {
         textElement.innerHTML = `
-<b>Courtney Te</b> (she/her) is a Cambodian-American graphic designer and artist residing in the Northern Virginia and D.C. Metropolitan area. She is a recent graduate from VCUArts, where she recieved her Bachelor of Fine Arts in Graphic Design in May 2024. She specializes in motion graphics, zine design, and more recently developed an interest in web design/coding. 
-<br><br>
-She currently works at Get Social RVA as a contracted Graphic Designer who helps with brand guidelines, motion graphics, and social media design. She was a Graphic Design Intern at Hagos Marketing during the Fall of 2023. She has taken on individual commissions through her TikTok and Instagram, @coverydesigns.
-<br><br>
-Courtney's latest project LUCKY ONE was distributed as a physical zine (OPEN HOUSE: GDES Spring 2024 Senior Show) and an interactive website in May 2024. It was funded by a VCUArts Undergraduate Research grant about addressing the harm of the model minority myth, specifically on Asian communities.
+      My name is Courtney Te (she/her) and I am a Cambodian-American graphic designer and artist from the Northern Virginia and D.C. Metropolitian area. I am a recent graduate of VCUArts where I recieved my Bachelor of Fine Arts in Graphic Design in May 2024. 
+      <br><br>
+      I have a special interest in digital forms of art, specifically motion graphics, web design, and zine design. I use the Adobe Creative cloud for most of my projects but I also use Figma, Blender, and HTML/CSS coding (VS Code) to complete my work.<br><br>
+      I was a Graphic Design Intern at <i>Hagos Marketing</i> during the Fall of 2023. I currently work at <i>Get Social RVA</i> as a contracted Graphic Designer who helps with brand guidelines, motion graphics, and social media design. I also take commissions through TikTok and Instagram, @coverydesigns.
+      <br><br>
+      During my time as an undergraduate at VCUArts, I recieved a VCUArts Undergraduate Research Grant for the 'LUCKY ONE' project that promotes interdisciplinary collaboration between schools.
         `;
     });
 
     document.getElementById('text3-btn').addEventListener('click', () => {
         textElement.innerHTML = `
-            Coming soon!
+            hi there, i'm courtney! (she/her)<br><br>
+            i love the color pink, dying my hair every color of the rainbow (although those days are past for now — bleach is expensive :/), and weird pets (rip to the rats). 
+            <br><br>
+            i'm quite the ambivert, simultaneously always wanting to be around people i love while being a self-proclaimed hermit. i like cozy games and constantly switching between my rotation of favorites on a weekly basis.
+            <br><br>
+            i grew up on the internet, probably way too young for my own good. i had internet friends, i paid for a club penguin membership, and i had a tumblr page where taylor swift still follows me to this day.
+            <br><br>
+            i've always liked creating and being creative. it may not have always manifested in traditional art or design, but it eventually led me to the path i am on today. 
         `;
     });
 });
