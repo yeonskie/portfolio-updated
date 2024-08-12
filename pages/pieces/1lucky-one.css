@@ -421,7 +421,7 @@ body, html {
     height: 100vh; /* Ensures the container takes up the full viewport height */
     width: 450px;
     position: fixed;
-    left: 800px;
+    left: 55vw;
     top: 50%; /* Start positioning at the vertical center */
     transform: translateY(-50%); /* Adjust to truly center the container */
     line-height:20px;
