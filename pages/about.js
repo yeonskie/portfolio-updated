@@ -447,3 +447,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // Change image every 2 seconds
   setInterval(showNextImage, 2000);
 });
+
+const images = document.querySelectorAll('.picture img');
+let index = 0;
+
+function fadeImages() {
+    images[index].classList.remove('show');
+    index = (index + 1) % images.length;
+    images[index].classList.add('show');
+}
+
+setInterval(fadeImages, 3000);
+
+// Initialize the first image as visible
+images[0].classList.add('show');

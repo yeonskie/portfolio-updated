@@ -327,49 +327,35 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const photos = document.querySelectorAll('.photo-grid img');
-  const carousel = document.getElementById('carousel');
-  const carouselImage = document.getElementById('carousel-image');
-  const leftArrow = document.querySelector('.left-arrow');
-  const rightArrow = document.querySelector('.right-arrow');
-  let currentIndex = 0;
+const imageSources = Array.from(document.querySelectorAll('.photogrid .photo img')).map(img => img.src);
+let currentImageIndex = 0;
 
-  function openCarousel(index) {
-      currentIndex = index;
-      carouselImage.src = photos[index].src;
-      carousel.style.display = 'flex'; // Show carousel
-  }
+document.querySelectorAll('.photogrid .photo').forEach((photo, index) => {
+    photo.addEventListener('click', () => {
+        const carousel = document.querySelector('.carousel');
+        const carouselImg = carousel.querySelector('.carousel-inner img');
+        currentImageIndex = index;
+        carouselImg.src = imageSources[currentImageIndex];
+        carousel.style.display = 'flex';
+    });
+});
 
-  function closeCarousel() {
-      carousel.style.display = 'none'; // Hide carousel
-  }
+document.querySelector('.carousel .next').addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex + 1) % imageSources.length;
+    document.querySelector('.carousel-inner img').src = imageSources[currentImageIndex];
+});
 
-  function showNextImage() {
-      currentIndex = (currentIndex + 1) % photos.length;
-      carouselImage.src = photos[currentIndex].src;
-  }
+document.querySelector('.carousel .prev').addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex - 1 + imageSources.length) % imageSources.length;
+    document.querySelector('.carousel-inner img').src = imageSources[currentImageIndex];
+});
 
-  function showPreviousImage() {
-      currentIndex = (currentIndex - 1 + photos.length) % photos.length;
-      carouselImage.src = photos[currentIndex].src;
-  }
+document.querySelector('.carousel').addEventListener('click', (e) => {
+    if (!e.target.closest('.carousel-inner') && !e.target.closest('.carousel-nav')) {
+        document.querySelector('.carousel').style.display = 'none';
+    }
+});
 
-  photos.forEach((photo, index) => {
-      photo.addEventListener('click', () => openCarousel(index));
-  });
-
-  leftArrow.addEventListener('click', () => {
-      showPreviousImage();
-  });
-
-  rightArrow.addEventListener('click', () => {
-      showNextImage();
-  });
-
-  carousel.addEventListener('click', (event) => {
-      if (event.target === carousel) {
-          closeCarousel();
-      }
-  });
+document.querySelector('.carousel-close').addEventListener('click', () => {
+  document.querySelector('.carousel').style.display = 'none';
 });
