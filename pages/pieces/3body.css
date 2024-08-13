@@ -58,7 +58,6 @@ body {
     color: white;
     display: flex;
     border-top: 1.5px solid #1b1b1b;
-    z-index:1000;
 }
 
 .section {
@@ -325,4 +324,130 @@ button {
 .back-button-container:hover .tooltip-text-back {
     visibility: visible;
     opacity: 1;
+}
+
+.textcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers the content vertically */
+    align-items: flex-start; /* Aligns items to the left within the container */
+    height: 100vh; /* Ensures the container takes up the full viewport height */
+    width: 450px;
+    position: fixed;
+    left: 50.5vw;
+    top: 50%; /* Start positioning at the vertical center */
+    transform: translateY(-50%); /* Adjust to truly center the container */
+    line-height:20px;
+    padding:25px;
+    height:auto;
+    border-radius:5px;
+}
+
+.text2 {
+    font-size: 13px;
+    line-height: 17px;
+    border: 1.5px solid #1b1b1b;
+    padding: 10px;
+    margin: 5px 0; /* Add space between the two divs */
+    width: 140px;
+    background-color: white;
+    /* Removed position: fixed */
+}
+
+.text {
+    font-size: 16px; /* Example font size */
+    margin: 5px 0; /* Add space between the two divs */
+}
+
+.description {
+    font-size:13px;
+    width:400px;
+}
+
+.extra {
+    font-size:13px;
+}
+
+.piece {
+    display: flex;
+    flex-direction: column; /* Stack images vertically */
+    align-items: center; /* Center images horizontally */
+    border:1.5px solid #1b1b1b;
+    border-radius:5px;
+    padding:5px;
+}
+
+.piece img {
+    width: 370px;
+    margin:10px;
+    cursor:pointer;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center .piece vertically */
+    height: 100vh;
+    left:23vw;
+    gap:0;
+    position:fixed;
+}
+
+/* Carousel styles */
+.carousel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.carousel-content {
+    position: relative;
+}
+
+.carousel-image {
+    max-width: 65%;
+    max-height: 90%;
+    display: block;
+    margin: auto;
+}
+
+.left-arrow, .right-arrow {
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 50px;
+    color: white;
+    background-color:transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transform: translateY(-50%);
+}
+
+.left-arrow {
+    left: 200px;
+}
+
+.right-arrow {
+    right: 200px;
+}
+
+.carousel-close {
+    position: absolute;
+    top:-20px;
+    right: 190px;
+    color: white;
+    font-size: 60px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
 }

@@ -374,3 +374,114 @@ document.getElementById('back-button').addEventListener('click', function() {
     });
   });
   
+  document.addEventListener('DOMContentLoaded', () => {
+    const images = document.querySelectorAll('.carousel-image');
+    let currentIndex = 0;
+    let isEnlarged = false;
+
+    // Function to show the current image
+    function showImage(index) {
+        images.forEach((img, i) => {
+            img.classList.toggle('active', i === index);
+        });
+    }
+
+    // Function to handle image enlargement
+    function toggleEnlarge(index) {
+        if (images[index].classList.contains('enlarged')) {
+            images[index].classList.remove('enlarged');
+            isEnlarged = false;
+            document.removeEventListener('click', outsideClick);
+        } else {
+            images.forEach(img => img.classList.remove('enlarged'));
+            images[index].classList.add('enlarged');
+            isEnlarged = true;
+            document.addEventListener('click', outsideClick);
+        }
+    }
+
+    // Function to handle clicks outside the enlarged image
+    function outsideClick(event) {
+        if (!event.target.classList.contains('carousel-image') || event.target.classList.contains('enlarged')) {
+            images.forEach(img => img.classList.remove('enlarged'));
+            isEnlarged = false;
+            document.removeEventListener('click', outsideClick);
+        }
+    }
+
+    // Set initial image
+    showImage(currentIndex);
+
+    // Add click event listener to images
+    images.forEach((img, index) => {
+        img.addEventListener('click', () => {
+            toggleEnlarge(index);
+        });
+    });
+
+    // Navigation through images using arrow keys
+    document.addEventListener('keydown', (event) => {
+        if (isEnlarged) {
+            if (event.key === 'ArrowRight') {
+                currentIndex = (currentIndex + 1) % images.length;
+                showImage(currentIndex);
+            } else if (event.key === 'ArrowLeft') {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                showImage(currentIndex);
+            }
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const images = document.querySelectorAll('.piece img');
+    const carousel = document.getElementById('carousel');
+    const carouselImage = document.getElementById('carousel-image');
+    const leftArrow = document.querySelector('.left-arrow');
+    const rightArrow = document.querySelector('.right-arrow');
+    let currentIndex = 0;
+
+    function openCarousel(index) {
+        currentIndex = index;
+        carouselImage.src = images[index].src;
+        carousel.style.display = 'flex';
+    }
+
+    function closeCarousel() {
+        carousel.style.display = 'none';
+    }
+
+    function showNextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        carouselImage.src = images[currentIndex].src;
+    }
+
+    function showPreviousImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        carouselImage.src = images[currentIndex].src;
+    }
+
+    images.forEach((img, index) => {
+        img.addEventListener('click', () => openCarousel(index));
+    });
+
+    leftArrow.addEventListener('click', showPreviousImage);
+    rightArrow.addEventListener('click', showNextImage);
+
+    carousel.addEventListener('click', (event) => {
+        if (event.target === carousel) {
+            closeCarousel();
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const carousel = document.getElementById('carousel');
+  const closeButton = document.getElementById('carousel-close');
+
+  function closeCarousel() {
+      carousel.style.display = 'none';
+  }
+
+  closeButton.addEventListener('click', closeCarousel);
+});
