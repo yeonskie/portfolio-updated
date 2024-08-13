@@ -321,3 +321,58 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const pieceImage = document.querySelector('.piece img');
+  const overlay = document.createElement('div');
+  overlay.className = 'overlay';
+  document.body.appendChild(overlay);
+
+  pieceImage.addEventListener('click', () => {
+      pieceImage.classList.toggle('enlarged');
+      overlay.style.display = pieceImage.classList.contains('enlarged') ? 'block' : 'none';
+  });
+
+  overlay.addEventListener('click', () => {
+      pieceImage.classList.remove('enlarged');
+      overlay.style.display = 'none';
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const pieceImg = document.querySelector('.piece img');
+
+  // Function to handle image enlargement
+  function enlargeImage() {
+      // Create an overlay
+      const overlay = document.createElement('div');
+      overlay.style.position = 'fixed';
+      overlay.style.top = '0';
+      overlay.style.left = '0';
+      overlay.style.width = '100%';
+      overlay.style.height = '100%';
+      overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+      overlay.style.zIndex = '999';
+      document.body.appendChild(overlay);
+
+      // Clone the image and style it
+      const enlargedImg = pieceImg.cloneNode();
+      enlargedImg.style.position = 'fixed';
+      enlargedImg.style.top = '50%';
+      enlargedImg.style.left = '50%';
+      enlargedImg.style.transform = 'translate(-50%, -50%)';
+      enlargedImg.style.width = '75%';
+      enlargedImg.style.height = 'auto';
+      enlargedImg.style.zIndex = '1000';
+      document.body.appendChild(enlargedImg);
+
+      // Close the image when clicking outside
+      overlay.addEventListener('click', () => {
+          document.body.removeChild(overlay);
+          document.body.removeChild(enlargedImg);
+      });
+  }
+
+  // Event listener for the image click
+  pieceImg.addEventListener('click', enlargeImage);
+});

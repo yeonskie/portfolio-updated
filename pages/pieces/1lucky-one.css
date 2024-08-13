@@ -333,14 +333,17 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right:170px;
+    margin-right:200px;
 }
 
 .photogrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    width: 33%; /* Adjust this width as needed */
+    width: 34%; /* Adjust this width as needed */
+    border:1.5px solid #1b1b1b;
+    padding:15px;
+    border-radius:5px;
 }
 
 .photogrid .photo {
@@ -421,10 +424,13 @@ body, html {
     height: 100vh; /* Ensures the container takes up the full viewport height */
     width: 450px;
     position: fixed;
-    left: 55vw;
+    left: 51vw;
     top: 50%; /* Start positioning at the vertical center */
     transform: translateY(-50%); /* Adjust to truly center the container */
     line-height:20px;
+    padding:25px;
+    height:auto;
+    border-radius:5px;
 }
 
 .text2 {
