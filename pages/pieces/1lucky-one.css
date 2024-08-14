@@ -458,3 +458,11 @@ body, html {
 .extra {
     font-size:13px;
 }
+
+.text a {
+    color:#1b1b1b;
+}
+
+.text a:hover {
+    color:#cccccc;
+}

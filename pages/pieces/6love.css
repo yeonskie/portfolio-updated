@@ -58,7 +58,6 @@ body {
     color: white;
     display: flex;
     border-top: 1.5px solid #1b1b1b;
-    z-index:1000;
 }
 
 .section {
@@ -326,3 +325,74 @@ button {
     visibility: visible;
     opacity: 1;
 }
+
+/* styles.css */
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+.piece {
+    position: fixed;
+    top: 50%;
+    left: 47%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.piece img {
+    display: block;
+    max-width: 50%;
+    height: auto;
+    transition: transform 0.3s ease;
+    padding: 10px;
+    border:1.5px solid #1b1b1b;
+    border-radius:5px;
+}
+
+.textcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers the content vertically */
+    align-items: flex-start; /* Aligns items to the left within the container */
+    height: 100vh; /* Ensures the container takes up the full viewport height */
+    width: 450px;
+    position: fixed;
+    left: 50.5vw;
+    top: 50%; /* Start positioning at the vertical center */
+    transform: translateY(-50%); /* Adjust to truly center the container */
+    line-height:20px;
+    padding:25px;
+    height:auto;
+    border-radius:5px;
+}
+
+.text2 {
+    font-size: 13px;
+    line-height: 17px;
+    border: 1.5px solid #1b1b1b;
+    padding: 10px;
+    margin: 5px 0; /* Add space between the two divs */
+    width: 220px;
+    background-color: white;
+    /* Removed position: fixed */
+}
+
+.text {
+    font-size: 16px; /* Example font size */
+    margin: 5px 0; /* Add space between the two divs */
+}
+
+
+.description {
+    font-size:13px;
+    width:250px;
+}
+
+.extra {
+    font-size:13px;
+}
+

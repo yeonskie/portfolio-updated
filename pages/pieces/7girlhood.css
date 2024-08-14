@@ -14,6 +14,7 @@ body {
     font-weight: 400;
     font-style: normal;
     color: #1b1b1b;
+    overflow-y:hidden;
 }
 
 .top-bar {
@@ -58,7 +59,6 @@ body {
     color: white;
     display: flex;
     border-top: 1.5px solid #1b1b1b;
-    z-index:1000;
 }
 
 .section {
@@ -325,4 +325,146 @@ button {
 .back-button-container:hover .tooltip-text-back {
     visibility: visible;
     opacity: 1;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right:200px;
+}
+
+.photogrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 40%; /* Adjust this width as needed */
+    border:1.5px solid #1b1b1b;
+    padding:15px;
+    border-radius:5px;
+    position:fixed;
+    left:10vw;
+}
+
+.photogrid .photo {
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+
+.carousel {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.carousel-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.carousel-inner img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 5px;
+    margin: auto;
+    display: block;
+}
+
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    user-select: none;
+    font-size:35px;
+    font-weight: 800;
+}
+
+.carousel-nav.prev {
+    left: 20px;
+}
+
+.carousel-nav.next {
+    right: 20px;
+}
+
+.carousel-close {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    user-select: none;
+    z-index: 1001; /* Ensure it appears above other elements */
+}
+
+
+.textcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers the content vertically */
+    align-items: flex-start; /* Aligns items to the left within the container */
+    height: 100vh; /* Ensures the container takes up the full viewport height */
+    width: 450px;
+    position: fixed;
+    left: 51vw;
+    top: 50%; /* Start positioning at the vertical center */
+    transform: translateY(-50%); /* Adjust to truly center the container */
+    line-height:20px;
+    padding:25px;
+    height:auto;
+    border-radius:5px;
+}
+
+.text2 {
+    font-size: 13px;
+    line-height: 17px;
+    border: 1.5px solid #1b1b1b;
+    padding: 10px;
+    margin: 5px 0; /* Add space between the two divs */
+    width: 140px;
+    background-color: white;
+    /* Removed position: fixed */
+}
+
+.text {
+    font-size: 16px; /* Example font size */
+    margin: 5px 0; /* Add space between the two divs */
+}
+
+
+.description {
+    font-size:13px;
+    width:400px;
+}
+
+.extra {
+    font-size:13px;
+}
+
+.text a {
+    color:#1b1b1b;
+}
+
+.text a:hover {
+    color:#cccccc;
 }
