@@ -17,11 +17,13 @@ img {
 body {
     margin: 0;
     height: 100vh;
+    weight:100vw;
     background-color: #ffffff;
     font-family: "epilogue", sans-serif;
     font-weight: 400;
     font-style: normal;
     color: #1b1b1b;
+    overflow:hidden;
 }
 
 .top-bar {
@@ -289,7 +291,7 @@ h2 {
     font-style: normal;
     font-size:16px;
     text-align:center;
-    width:17vw;
+    width:100%;
     padding:7px;
 }
 
@@ -857,8 +859,6 @@ body {
     height: 200px; /* Adjust as needed */
     background-color: #ffffff;
     color: #1b1b1b;
-    display: flex;
-    flex-direction: column;
     padding: 20px;
     border-radius: 8px;
     border: 1.5px solid #1b1b1b;
@@ -1101,3 +1101,184 @@ body {
 .button-item data-text {
     width:100px;
 }
+
+/* Mobile First */
+@media (max-width: 576px) { 
+    /* Small devices (landscape phones, 576px and up) */
+    .box {
+        display:none;
+    }
+    .music-player {
+        display:none;
+    }
+    .location {
+        display:none;
+    }
+
+    .intro {
+        width:75vw;
+    }
+
+    .overview {
+        display:none;
+    }
+
+    .rearrange {
+        display:none;
+    }
+
+    .section middle-section {
+        display:none;
+    }
+
+    .statement {
+        display:none;
+    }
+
+    .name {
+        font-size:35px;
+        left:24vw;
+        top:16vh;
+        font-weight:800;
+    }
+
+    .links a {
+        width:200px;
+    }
+
+    marquee {
+        display:none;
+    }
+
+    .switch1 {
+        left:24vw;
+        top:21vh;
+    }
+
+    .top-bar .section right-seciton {
+        width:400px;
+    }
+    
+   .top-bar .section middle-section {
+        width:0;
+    }
+    
+    .bottom-bar .left-section {
+        display:none;
+    }
+
+    .bottom-bar .right-section {
+        display:none;
+    }
+
+    .bottom-bar .middle-section button {
+        width:50vw;
+    }
+    
+    .dropdown-content {
+        width:50vw;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .h2 {
+        font-size:50px;
+    }
+
+    .intro h2 {
+        width:200px;
+        text-align:center;
+        width:100%;
+    }
+
+    .intro {
+        height:32vh;
+        width:50vw;
+    }
+
+    .intro-wrap {
+        display:flex;
+        justify-content: center;
+        align-items:center;
+    }
+    
+    .links a {
+        width:200px;
+    }
+
+    .music {
+        height:6vh;
+    }
+
+    .overview {
+        display:none;
+    }
+
+    .stars {
+        left: 60vw;
+        position: fixed;
+        
+    }
+
+    .rearrange {
+        display:none;
+    }
+
+    .statement {
+        display:none;
+    }
+
+    .bottom-bar .middle-section button {
+        width:250px;
+    }
+}
+
+
+@media (max-width: 992px) { 
+    /* Large devices (desktops, 992px and up) */
+    .intro {
+        height: auto;
+        width:30vw;
+    }
+
+    .intro h2 {
+        font-size:13px;
+    }
+
+    .links a {
+        width:20vw;
+        font-size:13px;
+    }
+    
+    .location {
+        font-size:13px;
+    }
+
+    .music {
+        height:8vh;
+    }
+
+    .flower {
+        width:25vw;
+        height:25vw;
+    }
+    
+    .overview {
+        width:22vw;
+        font-size:13px;
+        right:10vw;
+    }
+
+    .statement {
+        width:25vw;
+        display:none;
+    }
+    
+ #playlist {
+        width:20vw;
+    }
+}
+
+
+@media (min-width: 1200px) { /* Extra large devices (large desktops, 1200px and up) */}
